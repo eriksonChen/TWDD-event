@@ -10,11 +10,22 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'hello erikson!';
   form=false;
+  login=false;
 
   constructor(private router:Router){}
 
   ngOnInit(){
 
+  }
+
+  loginBtn(){
+
+    this.loginTo();
+  }
+
+  loginTo(){
+    $('.section1').slideUp();
+    this.login=true;
   }
 
   noteBtn(){
@@ -54,7 +65,7 @@ export class AppComponent implements OnInit{
     this.form=true;
     setTimeout(()=>{
       $( "body, html" ).animate({
-        scrollTop: $('app-form').offset().top
+        scrollTop: $('app-form').offset().top-50
       }, 600);
     },100);
     

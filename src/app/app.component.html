@@ -68,7 +68,7 @@
             <span class="input-group-addon glyphicon glyphicon-asterisk" aria-hidden="true"></span>
             <input type="password" class="form-control" placeholder="密碼">
           </div>
-          <button type="button" class="btn btn-secondary login-btn">登入</button>
+          <button type="button" class="btn btn-secondary login-btn" (click)="loginBtn()">登入</button>
         </form>
       </div>
       <div class="cont-right">
@@ -81,7 +81,7 @@
   </section>
   <!--section1 end-->
   <!--section2 start-->
-  <section class="section2">
+  <section class="section2" *ngIf="login">
     <h3 class="title">分享邀請碼拿現金</h3>
     <div class="cont">
       <div class="cont-left">
@@ -100,7 +100,7 @@
   </section>
   <!--section2 end-->
   <!--section3 start-->
-  <section class="section3">
+  <section class="section3" *ngIf="login">
     <h3 class="title">獎金查詢<span class="small-txt">邀請碼：abc123</span></h3>
     <div class="boxes">
       <div class="box">
