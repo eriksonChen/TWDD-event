@@ -449,9 +449,7 @@ body {
                 margin-top: 10px;
                 @include btnStyle(200px, #fff, $ballRed, $ballRed, inherit);
             }
-            .account-info {
-                display: none;
-            }
+            
         }
         .cont-right,
         .money-cont-s {

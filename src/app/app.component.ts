@@ -9,12 +9,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'hello erikson!';
+  form=false;
 
   constructor(private router:Router){}
 
   ngOnInit(){
-    console.log('index');
-    
+
   }
 
   noteBtn(){
@@ -48,5 +48,15 @@ export class AppComponent implements OnInit{
     if($('.navbar-toggle').css('display') !='none'){
         $(".navbar-toggle").trigger( "click" );
     }
+  }
+
+  getForm(){
+    this.form=true;
+    setTimeout(()=>{
+      $( "body, html" ).animate({
+        scrollTop: $('app-form').offset().top
+      }, 600);
+    },100);
+    
   }
 }

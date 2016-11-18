@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,6 +11,7 @@ import { QaComponent } from './qa/qa.component';
 import { PopComponent } from './pop/pop.component';
 import { HistoryComponent } from './history/history.component';
 import { ExchangeComponent } from './exchange/exchange.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,15 @@ import { ExchangeComponent } from './exchange/exchange.component';
     QaComponent,
     PopComponent,
     HistoryComponent,
-    ExchangeComponent
+    ExchangeComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -130,85 +130,12 @@
         </div>
         <div class="btns">
           <button type="button" class="btn btn-secondary record-btn" [routerLink]="['/pop/exchange']" (click)="exchangeBtn()">兌換記錄</button>
-          <button type="button" class="btn btn-secondary bonus-btn">申請獎金</button>
+          <button type="button" class="btn btn-secondary bonus-btn" (click)="getForm()">申請獎金</button>
         </div>
       </div>
     </div>
   </section>
   <!--section3 end-->
-  <!--section4 start-->
-  <section class="section4">
-    <h3 class="title">獎金申請</h3>
-    <div class="tips">獎金若不足3000元，郵資匯費由活動參與者吸收</div>
-    <div class="money-cont-s">
-      <div class="money">2,500元</div>
-      <div class="money-txt">可兌換獎金</div>
-      <div class="money-pic"><img src="../assets/img/money.png" alt=""></div>
-    </div>
-    <div class="cont">
-      <div class="cont-left">
-        <form role="form">
-          <div class="form-group form-group-lg col-sm-6 col-xs-12">
-            <label for="myname">姓名</label>
-            <input type="text" class="form-control" id="myname" placeholder="請輸入正確姓名">
-          </div>
-          <div class="form-group form-group-lg col-sm-6 col-xs-12">
-            <label for="exampleInputId">身份證</label>
-            <input type="text" class="form-control" id="exampleInputId" placeholder="請填正確身份證號碼">
-          </div>
-          <div class="form-group form-group-lg col-xs-12">
-            <label for="exampleInputAdd">地址</label>
-            <input type="text" class="form-control" id="exampleInputAdd" placeholder="請填正確地址">
-          </div>
-          <div class="form-group form-group-lg col-sm-6 col-xs-12">
-            <label for="mytype">請選擇獎金申請方式</label>
-            <select class="form-control" id="mytype">
-                <option>現金匯款</option>
-                <option>現金禮券</option>
-              </select>
-          </div>
-          <div class="form-group form-group-lg col-sm-6 col-xs-12">
-            <label for="coupon">請選擇要申請的禮券</label>
-            <select class="form-control" id="coupon">
-                <option selected>請選擇</option>
-                <option>SOGO禮券</option>
-                <option>7-11禮券</option>
-                <option>全聯禮券</option>
-              </select>
-          </div>
-          <!--滙款要填的帳戶資料-->
-          <div class="account-info col-sm-12">
-            <div class="form-group form-group-lg col-sm-6 col-xs-12">
-              <label for="bankCode">銀行代碼</label>
-              <select class="form-control" id="bankCode">
-                  <option selected>請選擇</option>
-                  <option>822</option>
-                </select>
-            </div>
-            <div class="form-group form-group-lg col-sm-6 col-xs-12">
-              <label for="bankName">分行</label>
-              <input type="text" class="form-control" id="bankName" placeholder="請填寫分行名稱">
-            </div>
-            <div class="form-group form-group-lg col-xs-12">
-              <label for="account">銀行帳號</label>
-              <input type="text" class="form-control" id="account">
-            </div>
-          </div>
-          <div class="checkbox col-xs-12">
-            <label>
-                <input type="checkbox"> 我已同意<a class="note-btn" href="javascript:;">活動條款</a>、獎金的稅務說明及發放說明
-              </label>
-          </div>
-          <button type="submit" class="btn btn-default submit-btn  col-xs-12">資料送出</button>
-        </form>
-      </div>
-      <div class="cont-right money-cont">
-        <div class="money">2,500元</div>
-        <div class="money-txt">可兌換獎金</div>
-        <div class="money-pic"><img src="../assets/img/money.png" alt=""></div>
-      </div>
-    </div>
-  </section>
-  <!--section4 end-->
+  <app-form *ngIf="form"></app-form>
 </div>
 <router-outlet></router-outlet>
