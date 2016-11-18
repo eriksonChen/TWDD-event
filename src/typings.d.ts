@@ -2,3 +2,5 @@
 // https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html
 
 declare var $: any;
+declare var FB: any;
+
