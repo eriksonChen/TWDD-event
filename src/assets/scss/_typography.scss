@@ -1,0 +1,62 @@
+// font style
+// @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+@import "media";
+
+// @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600");
+
+
+body {
+    font-family:"微軟正黑體", 'Heiti TC', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 1.5;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 54px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 36px;
+}
+
+h4 {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 1.5;
+}
+
+h6 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    line-height: 2;
+}
+
+P {
+    font-size: 0.87rem;
+    font-weight: 300;
+    @media #{$sml} {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}

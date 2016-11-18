@@ -5,10 +5,22 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { NoteComponent } from './note/note.component';
+import { DetailsComponent } from './details/details.component';
+import { QaComponent } from './qa/qa.component';
+import { PopComponent } from './pop/pop.component';
+import { HistoryComponent } from './history/history.component';
+import { ExchangeComponent } from './exchange/exchange.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NoteComponent,
+    DetailsComponent,
+    QaComponent,
+    PopComponent,
+    HistoryComponent,
+    ExchangeComponent
   ],
   imports: [
     BrowserModule,
