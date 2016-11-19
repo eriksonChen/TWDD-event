@@ -20,8 +20,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active" data-toggle="collapse" data-target=".nav-collapse.in"><a [routerLink]="['/']" (click)="homeBtn()">首頁</a></li>
-        <li routerLinkActive="active" data-toggle="collapse" data-target=".nav-collapse.in"><a [routerLink]="['/pop/note']">活動辦法</a></li>
-        <li routerLinkActive="active" data-toggle="collapse" data-target=".nav-collapse.in"><a [routerLink]="['/pop/qa']">服務Q&A</a></li>
+        <li routerLinkActive="active" data-toggle="collapse" data-target=".nav-collapse.in"><a [routerLink]="['/pop/note']" (click)="noteBtn()">活動辦法</a></li>
+        <li routerLinkActive="active" data-toggle="collapse" data-target=".nav-collapse.in"><a [routerLink]="['/pop/qa']" (click)="qaBtn()">服務Q&A</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -38,10 +38,13 @@
         <p>
           多一次代駕、少一次酒駕 <br> 分享台灣代駕APP，<span class="redTxt">300</span>元現金賺不停
         </p>
-        <div class=" car">
+        <div class="car">
           <img src="../assets/img/girls.png">
         </div>
         <div class="line"></div>
+        <div class="arrow" (click)="onDownBtn()">
+          <img src="../assets/img/down.svg" alt="" class="icon">
+        </div>
         <div class="banner-txt">
           夠交情喝兩杯，不酒駕平安歸！<br> 換帖真心推薦，現金獎勵回饋！
         </div>

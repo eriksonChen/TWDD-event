@@ -34,10 +34,7 @@ export class AppComponent implements OnInit{
   }
 
   noteBtn(){
-    console.log('活動辦法');
-    if($('.navbar-toggle').css('display') !='none'){
-        $(".navbar-toggle").trigger( "click" );
-    }
+    this.onSliderUP();
   }
   historyBtn(){
     console.log('分享記錄');
@@ -49,19 +46,21 @@ export class AppComponent implements OnInit{
     console.log('兌換記錄');
   }
   qaBtn(){
-    console.log('服務 Q$A');
-    if($('.navbar-toggle').css('display') !='none'){
-        $(".navbar-toggle").trigger( "click" );
-    }
+    this.onSliderUP();
   }
 
   homeBtn(){
     $( "body, html" ).animate({
 			scrollTop: 0
 		}, 600);
-    if($('.navbar-toggle').css('display') !='none'){
-        $(".navbar-toggle").trigger( "click" );
-    }
+    this.onSliderUP();
+  }
+
+  onDownBtn(){
+    let tar = $('.section1').css('display')=='block' ? $('.section1') : $('.section2');
+    $( "body, html" ).animate({
+      scrollTop: tar.offset().top-50
+    }, 600);
   }
 
   getForm(){
@@ -71,6 +70,13 @@ export class AppComponent implements OnInit{
         scrollTop: $('app-form').offset().top-50
       }, 600);
     },100);
+  }
+
+  onSliderUP(){
+    if($('.navbar-toggle').css('display') !='none'){
+          $(".navbar-toggle").trigger( "click" );
+      }
+      console.log('up');
   }
 
   shareFbBtn(){
