@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +9,22 @@
   <base href="/">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+  <!--<script src="https://www.google.com/recaptcha/api.js?render=explicit&amp;onload=onloadCallback"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+  <!--<script type="text/javascript">
+  var onloadCallback = function() {
+    alert("grecaptcha is ready!");
+  };
+</script>-->
+
 </head>
 
 <body>
   <app-root>Loading...</app-root>
-  <!-- jQuery (Bootstrap 所有外掛均需要使用) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <!-- 依需要參考已編譯外掛版本（如下），或各自獨立的外掛版本 -->
-  <!-- 最新編譯和最佳化的 JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  
   <script>
     window.fbAsyncInit = function() {
       FB.init({

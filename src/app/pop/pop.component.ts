@@ -22,7 +22,6 @@ export class PopComponent implements OnInit {
   }
 
   onPage(str) {
-    console.log(str);
     if (str.indexOf('note') != -1) {
       this.isNote = true;
     }

@@ -11,7 +11,7 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, OnDestroy{
-  recaptchaSiteKey  = '6LdAcwwUAAAAACAzbaFRJcalcqhxCzktmV_mbKw3'; //recaptcha sitekey
+  recaptchaSiteKey  = '6LdAcwwUAAAAACAzbaFRJcalcqhxCzktmV_mbKw3'; 
   form=false;
   login=false;
   fbapi='108756302487903';
@@ -36,12 +36,13 @@ export class AppComponent implements OnInit, OnDestroy{
     });
   }
 
-  onCaptchaComplete(res: string){
-      console.log('reCAPTCHA response recieved:'+res);
-  }
-  
   onLogin(){
-    this.loginTo();
+    if(this.user.captcha){
+      this.loginTo();
+    }else{
+      alert('請勾選我不是機器人');
+    }
+    
   }
   loginTo(){
     $('.section1').slideUp();

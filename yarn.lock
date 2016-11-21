@@ -13,6 +13,10 @@
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@angular-cli/base-href-webpack/-/base-href-webpack-1.0.8.tgz#3ff5880d3b3fd4097d714c88a8762a05f6715ce0"
 
+"@angular/common@^2.0.0":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.2.1.tgz#ad7996a865b7b11fc315363827f2414a48c6589c"
+
 "@angular/common@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.2.0.tgz#b52686eafd71e053169ac0257f9135f9583247b6"
@@ -29,6 +33,10 @@
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.2.0.tgz#154dfba521f2cce2655610f7d2e5065b04ea86b9"
 
+"@angular/core@^2.0.0":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.2.1.tgz#86fdc34a370a4fcfe84ed9de4b3c43548612919c"
+
 "@angular/core@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.2.0.tgz#7a3a8592b6731a65e5a9746ce45419d86d15fe56"
@@ -44,6 +52,10 @@
 "@angular/platform-browser-dynamic@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.2.0.tgz#db044fbdf8caeb8c4cb3eb5f5a7a57bbcf2eb9eb"
+
+"@angular/platform-browser@^2.0.0":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.2.1.tgz#d51b36260089f3054e745efad05993523d5a5293"
 
 "@angular/platform-browser@^2.1.0":
   version "2.2.0"
@@ -70,6 +82,10 @@
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.1.7.tgz#350539194286f13f01682ba07ee4243ce20f7e17"
   dependencies:
     "@angular-cli/ast-tools" "^1.0.0"
+
+"@types/grecaptcha@^2.0.30":
+  version "2.0.30"
+  resolved "https://registry.yarnpkg.com/@types/grecaptcha/-/grecaptcha-2.0.30.tgz#5a627e7e16df92587d5950a6f6543caa34e2887c"
 
 "@types/jasmine@^2.2.30", "@types/jasmine@^2.2.31":
   version "2.5.38"
@@ -3792,6 +3808,23 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ng2-google-recaptcha@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ng2-google-recaptcha/-/ng2-google-recaptcha-1.1.0.tgz#882add0d536c97ccf749f1a6752ee82d1414fb8f"
+  dependencies:
+    "@angular/common" "^2.0.0"
+    "@angular/core" "^2.0.0"
+    "@angular/platform-browser" "^2.0.0"
+    core-js "^2.4.1"
+    rxjs "5.0.0-beta.12"
+    systemjs "0.19.27"
+    tslerp "^1.0.2"
+    zone.js "^0.6.23"
+
+ng2-recaptcha@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/ng2-recaptcha/-/ng2-recaptcha-1.4.0.tgz#2abc26abbbbf6ea7dd43cf42a56d1d918fb7818e"
+
 no-case@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.0.tgz#ca2825ccb76b18e6f79d573dcfbf1eace33dd164"
@@ -5589,6 +5622,12 @@ symlink-or-copy@^1.0.0, symlink-or-copy@^1.0.1:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/symlink-or-copy/-/symlink-or-copy-1.1.6.tgz#b5f6e8e00616210f64e6b3fa114ea0208e268f78"
 
+systemjs@0.19.27:
+  version "0.19.27"
+  resolved "https://registry.yarnpkg.com/systemjs/-/systemjs-0.19.27.tgz#f1740d565ce64371ac0de7072a4d1e5471ba7ba2"
+  dependencies:
+    when "^3.7.5"
+
 tapable@^0.1.8:
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-0.1.10.tgz#29c35707c2b70e50d07482b5d202e8ed446dafd4"
@@ -5742,6 +5781,13 @@ tsickle@^0.1.7:
     mkdirp "^0.5.1"
     source-map "^0.4.2"
     source-map-support "^0.3.1"
+
+tslerp@^1.0.2:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/tslerp/-/tslerp-1.0.4.tgz#bea96606c557f02a0bde269415fc610bd6e09c45"
+  dependencies:
+    core-js "^2.4.0"
+    systemjs "0.19.27"
 
 tslint-loader@^2.1.4:
   version "2.1.5"
@@ -6118,6 +6164,10 @@ websocket-driver@>=0.5.1:
 websocket-extensions@>=0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.1.tgz#76899499c184b6ef754377c2dbb0cd6cb55d29e7"
+
+when@^3.7.5:
+  version "3.7.7"
+  resolved "https://registry.yarnpkg.com/when/-/when-3.7.7.tgz#aba03fc3bb736d6c88b091d013d8a8e590d84718"
 
 when@~3.6.x:
   version "3.6.4"
