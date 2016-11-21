@@ -19,7 +19,7 @@ export class AppComponent implements OnInit, OnDestroy{
   fbpic='http://e3pcr.com/assets/img/fb.jpg';
   code:string;//認證碼
   vcode:string;
-  user:Object={phone:'', password:""};
+  user:Object={phone:"", password:""};
   download="http://s.ad-locus.com/twdd";
   subs:Subscription;
 
@@ -37,12 +37,12 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   onLogin(){
-    if(this.user.captcha){
+    if(this.user['captcha']){
+      console.log(this.user['captcha']);
       this.loginTo();
     }else{
       alert('請勾選我不是機器人');
     }
-    
   }
   loginTo(){
     $('.section1').slideUp();

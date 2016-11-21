@@ -63,14 +63,16 @@
       <div class="cont-left">
         <h4>會員馬上登入分享即可享現金獎勵回饋!</h4>
         <form (ngSubmit)="onLogin()" #myform="ngForm">
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
-            <input type="tel" class="form-control" name="user_phone" maxlength="10" pattern="09[1-8][0-9]{7}" [(ngModel)]="user.phone"
-              placeholder="你的手機號碼" required>
-          </div>
-          <div class="input-group input-group-lg">
-            <span class="input-group-addon glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-            <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="密碼" required>
+          <div class="inputGroup">
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
+              <input type="tel" class="form-control" name="user_phone" maxlength="10" pattern="09[1-8][0-9]{7}" [(ngModel)]="user.phone"
+                placeholder="你的手機號碼" required>
+            </div>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+              <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="密碼" required>
+            </div>
           </div>
           <recaptcha [(ngModel)]="user.captcha" name="captcha" required [siteKey]="recaptchaSiteKey"></recaptcha>
           <button type="submit" class="btn btn-secondary login-btn">登入</button>
