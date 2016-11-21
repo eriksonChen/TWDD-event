@@ -1,38 +1,52 @@
+import { TwddServiceService } from './twdd-service.service';
+import { Subscription } from 'rxjs/Subscription';
 import { Router } from '@angular/router';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 @Component({
+  // moduleId: module.id,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['../assets/scss/style.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit{
-  title = 'hello erikson!';
+export class AppComponent implements OnInit, OnDestroy{
+  recaptchaSiteKey  = '6LdAcwwUAAAAACAzbaFRJcalcqhxCzktmV_mbKw3'; //recaptcha sitekey
   form=false;
   login=false;
   fbapi='108756302487903';
   url='http://twdd.com.tw';
   fbpic='http://e3pcr.com/assets/img/fb.jpg';
-  code:string;
+  code:string;//認證碼
+  vcode:string;
+  user:Object={phone:'', password:""};
   download="http://s.ad-locus.com/twdd";
+  subs:Subscription;
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private twddService:TwddServiceService ){}
 
   ngOnInit(){
-    this.code="abc123";
+    this.code = 'asdf1234';
+    this.subs = this.twddService.getVcode().subscribe(res =>{
+      this.vcode = res.vcode;
+      console.log(`get vcode = ${this.vcode}`);
+    },
+    err => {
+      console.log('Error fetching data');
+    });
   }
 
-  loginBtn(){
-
+  onCaptchaComplete(res: string){
+      console.log('reCAPTCHA response recieved:'+res);
+  }
+  
+  onLogin(){
     this.loginTo();
   }
-
   loginTo(){
     $('.section1').slideUp();
     this.login=true;
   }
-
   noteBtn(){
     this.onSliderUP();
   }
@@ -85,27 +99,28 @@ export class AppComponent implements OnInit{
     this.shareFb(this.url,title,des,this.fbpic);
   }
 
+  shareFb(share_u: string, title: string, fb_des: string, pic: string) {
+    FB.ui({
+      method: 'feed',
+      link: share_u,
+      caption: '台灣代駕',
+      name: title,
+      description: fb_des,
+      picture: pic
+    }, (response)=> {
+      if (response) {
+        console.log(response.post_id);
+      } else {
+        console.log('no share');
+      }
+    });
+    // let share_fb = `https://www.facebook.com/dialog/feed?app_id=${this.fbapi}&display=popup&caption&link=` +encodeURIComponent(share_u) +`&redirect_uri=${this.url}close.html&picture=` + encodeURIComponent(pic) +`&description=` + encodeURIComponent(fb_des) +`&name=` + encodeURIComponent(title);
+    // window.open(share_fb, 'sharer', 'toolbar=0,status=0,width=625,height=583');
+  }
 
-  shareFb(share_u:string, title:string, fb_des:string, pic:string) {
-        console.log(this.url, this.fbapi);
-        FB.ui({
-          method: 'feed',
-          link: share_u,
-          caption: '台灣代駕',
-          name:title,
-          description:fb_des,
-          picture:pic
-        }, function(response){
-          if(response){
-            console.log(response.post_id);
-          }else{
-            console.log('no share');
-          }
-          
-        });
 
-        // let share_fb = `https://www.facebook.com/dialog/feed?app_id=${this.fbapi}&display=popup&caption&link=` +encodeURIComponent(share_u) +`&redirect_uri=${this.url}close.html&picture=` + encodeURIComponent(pic) +`&description=` + encodeURIComponent(fb_des) +`&name=` + encodeURIComponent(title);
-        // window.open(share_fb, 'sharer', 'toolbar=0,status=0,width=625,height=583');
+    ngOnDestroy(){
+      this.subs.unsubscribe();
     }
 
 }

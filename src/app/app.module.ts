@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RecaptchaModule } from 'ng2-recaptcha';
+// import { Ng2GoogleRecaptchaModule }  from 'ng2-google-recaptcha';
 import { AppRoutingModule } from './app-routing.module';
+import { TwddServiceService } from './twdd-service.service';
 
 import { AppComponent } from './app.component';
 import { NoteComponent } from './note/note.component';
@@ -29,9 +32,10 @@ import { FormComponent } from './form/form.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecaptchaModule.forRoot()
   ],
-  providers: [],
+  providers: [TwddServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

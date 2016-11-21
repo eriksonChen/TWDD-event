@@ -123,7 +123,7 @@ body {
                     background-color: #fff;
                     position: relative;
                     margin: -35px auto 10px;
-                    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.50);
+                    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.50);
                     /*opacity: 0.9;*/
                     display: none;
                     .icon {
@@ -133,7 +133,7 @@ body {
                         left: 50%;
                         transform: translateX(-50%) translateY(-50%);
                         animation-name: downIn;
-                        animation-duration: 1.5s; 
+                        animation-duration: 1.5s;
                         animation-iteration-count: infinite;
                     }
                     @media #{$sml} {
@@ -156,6 +156,7 @@ body {
                     display: none;
                 }
             }
+            //左側手機版才會顯示的圖片
             .car {
                 display: none;
                 img {
@@ -218,6 +219,9 @@ body {
             }
         }
         .cont-left {
+            .glyphicon{
+                top: 0;
+            }
             @media #{$sml} {
                 background-color: inherit;
                 padding-top: 10px !important;
@@ -269,37 +273,35 @@ body {
         .cont {
             .cont-left,
             .cont-right {
-                height: 335px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 @media #{$sml} {
                     height: auto;
                 }
             }
             .cont-left {
                 img {
-                    position: relative;
-                    top: 50%;
-                    left: 50%;
-                    transform: translateX(-50%) translateY(-50%);
                     width: 70%;
                     height: auto;
                 }
                 @media #{$sml} {
-                    /*height: 500px;*/
                     padding-bottom: 0;
                     text-align: center;
                     img {
                         width: 90%;
-                        top: inherit;
-                        left: inherit;
-                        transform: inherit;
                     }
                 }
             }
             .cont-right {
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-start;
+                @media #{$sml} {
+                    justify-content: center;
+                    align-items: center;
+                }
                 .share-txt {
-                    position: relative;
-                    top: 50%;
-                    transform: translateY(-50%);
                     h4 {
                         font-weight: bold;
                         line-height: 2;
@@ -312,6 +314,9 @@ body {
                 .share-btn {
                     position: relative;
                     margin-top: 50px;
+                    display:flex;
+                    justify-content: flex-start;
+                    width: 100%;
                     .fb-btn {
                         margin-right: 15px;
                         @include btnStyle(200px, #fff, #fff, #3C5A99, #116BA9);
@@ -324,11 +329,12 @@ body {
                     }
                     @media #{$sml} {
                         margin-top: 10px;
-                        text-align: center;
+                        justify-content: center;
+                        flex-direction: column;
                         .btn {
                             position: relative;
                             width: 200px;
-                            margin: 5px auto;
+                            margin: 10px auto;
                         }
                     }
                 }
@@ -472,7 +478,6 @@ body {
                 margin-top: 10px;
                 @include btnStyle(200px, #fff, $ballRed, $ballRed, inherit);
             }
-            
         }
         .cont-right,
         .money-cont-s {
@@ -530,7 +535,6 @@ body {
         height: 550px;
         .list-group {
             margin: 20px 70px;
-
         }
     }
     .details-pop {
@@ -539,7 +543,7 @@ body {
         .pop-txt {
             text-align: justify;
             margin: 20px 30px 0;
-            h4{
+            h4 {
                 font-size: 22px;
                 font-weight: bold;
             }
@@ -572,10 +576,10 @@ body {
             }
         }
     }
-    .qa-pop{
+    .qa-pop {
         width: 750px;
         height: auto;
-        .qa-list{
+        .qa-list {
             text-align: justify;
             margin: 20px;
             @media #{$sml} {
@@ -583,38 +587,36 @@ body {
             }
             li {
                 font-size: 22px;
-                list-style:none;
+                list-style: none;
                 line-height: 1.8;
                 margin-bottom: 20px;
-                .question{
+                .question {
                     font-weight: bold;
                     margin-bottom: 5px;
                 }
-                .answer{
+                .answer {
                     font-size: 18px;
                 }
             }
         }
     }
-
-    .exchange-pop{
+    .exchange-pop {
         width: 600px;
         height: auto;
         text-align: justify;
         .list-group {
             margin: 20px 50px;
-            .glyphicon-time{
-                @media #{$sml}{
+            .glyphicon-time {
+                @media #{$sml} {
                     display: none;
                 }
             }
         }
-        .time, .money{
+        .time,
+        .money {
             display: inline-block;
             line-height: 40px;
             margin: 0 10px;
-
-
         }
     }
     .pop-cont {
