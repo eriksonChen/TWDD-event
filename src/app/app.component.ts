@@ -91,13 +91,18 @@ export class AppComponent implements OnInit, OnDestroy{
     if($('.navbar-toggle').css('display') !='none'){
           $(".navbar-toggle").trigger( "click" );
       }
-      console.log('up');
   }
 
-  shareFbBtn(){
+  shareBtn(type){
     let title = "暢快飲酒，安全回家";
     let des = `昨晚酒後我花450元用APP呼叫酒後代駕，路上遇酒測攔檢，馬上現省九萬罰單。你也快下載 ${this.download}，期限內輸入我的推薦碼 ${this.code}，還送三趟百元⾞車車資折抵`;
-    this.shareFb(this.url,title,des,this.fbpic);
+    if(type=="fb"){
+      this.shareFb(this.url,title,des,this.fbpic);
+    }
+    if(type=='line'){
+      this.shareLine(des);
+    }
+    
   }
 
   shareFb(share_u: string, title: string, fb_des: string, pic: string) {
@@ -117,6 +122,11 @@ export class AppComponent implements OnInit, OnDestroy{
     });
     // let share_fb = `https://www.facebook.com/dialog/feed?app_id=${this.fbapi}&display=popup&caption&link=` +encodeURIComponent(share_u) +`&redirect_uri=${this.url}close.html&picture=` + encodeURIComponent(pic) +`&description=` + encodeURIComponent(fb_des) +`&name=` + encodeURIComponent(title);
     // window.open(share_fb, 'sharer', 'toolbar=0,status=0,width=625,height=583');
+  }
+
+  shareLine(str){
+    let url = 'http://line.naver.jp/R/msg/text/?'+encodeURIComponent(str)
+    window.open(url);
   }
 
 

@@ -99,8 +99,8 @@
           <h4>分享邀請碼 <br> 被邀請人享三趟100元車資折抵， <br>邀請人享三趟各100元共計300元的現金回饋。</h4>
         </div>
         <div class="share-btn">
-          <button type="button" class="btn btn-secondary fb-btn" (click)="shareFbBtn()">分享 <span><img src="./assets/img/fb-icon.svg" alt=""></span></button>
-          <button type="button" class="btn btn-secondary line-btn">分享 <span><img src="./assets/img/line-icon.png" alt=""></span></button>
+          <button type="button" class="btn btn-secondary fb-btn" (click)="shareBtn('fb')">分享 <span><img src="./assets/img/fb-icon.svg" alt=""></span></button>
+          <button type="button" class="btn btn-secondary line-btn" (click)="shareBtn('line')">分享 <span><img src="./assets/img/line-icon.png" alt=""></span></button>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
   <!--section2 end-->
   <!--section3 start-->
   <section class="section3" *ngIf="login">
-    <h3 class="title">獎金查詢<span class="small-txt">邀請碼：abc123</span></h3>
+    <h3 class="title">獎金查詢<span class="small-txt">邀請碼：{{code}}</span></h3>
     <div class="boxes">
       <div class="box">
         <div class="history-pic">
