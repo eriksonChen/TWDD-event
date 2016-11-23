@@ -1,0 +1,90 @@
+@charset "UTF-8";
+body {
+  font-family: "微軟正黑體", 'Heiti TC', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 1.5; }
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+h1 {
+  font-size: 54px;
+  font-weight: 500; }
+
+h2 {
+  font-size: 3rem; }
+
+h3 {
+  font-size: 36px; }
+
+h4 {
+  font-size: 20px;
+  line-height: 1.5; }
+
+h5 {
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 1.5; }
+
+h6 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 2; }
+
+P {
+  font-size: 0.87rem;
+  font-weight: 300; }
+  @media only screen and (max-width: 800px) {
+    P {
+      font-size: 1rem;
+      font-weight: 400; } }
+
+.container {
+  max-width: 730px;
+  padding-top: 15px; }
+  .container .header {
+    margin: 20px auto;
+    text-align: center;
+    color: #0077C8;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 10px; }
+    .container .header h2 {
+      font-weight: bold; }
+  .container .wrap {
+    text-align: center;
+    padding-top: 10px;
+    color: #4a4a4a; }
+    .container .wrap .logo {
+      margin: 0 auto 30px; }
+      .container .wrap .logo img {
+        width: 120px;
+        border-radius: 8px;
+        border: 1px solid #d9d9d9;
+        -webkit-box-shadow: 0px 2px 15px -6px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 2px 15px -6px rgba(0, 0, 0, 0.5); }
+    .container .wrap .title {
+      font-size: 24px;
+      padding: 0 15px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      /*color: $lightBlue;*/ }
+    .container .wrap .txt {
+      text-align: center;
+      color: #9b9b9b;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.5; }
+    .container .wrap .btn {
+      /*margin-top: 20px;*/
+      border: none;
+      background-color: #00A9E0; }
+      @media only screen and (max-width: 800px) {
+        .container .wrap .btn {
+          width: 90%; } }

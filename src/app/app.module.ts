@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RecaptchaModule } from 'ng2-recaptcha';
-// import { RecaptchaNoFormsModule } from 'ng2-recaptcha/ng2-recaptcha.noforms';
 import { AppRoutingModule } from './app-routing.module';
 import { TwddServiceService } from './twdd-service.service';
 
@@ -15,7 +14,7 @@ import { PopComponent } from './pop/pop.component';
 import { HistoryComponent } from './history/history.component';
 import { ExchangeComponent } from './exchange/exchange.component';
 import { FormComponent } from './form/form.component';
-import { MyformComponent } from './myform/myform.component';
+import { ForgetComponent } from './forget/forget.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,7 @@ import { MyformComponent } from './myform/myform.component';
     HistoryComponent,
     ExchangeComponent,
     FormComponent,
-    MyformComponent
+    ForgetComponent
   ],
   imports: [
     BrowserModule,

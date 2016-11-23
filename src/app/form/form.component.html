@@ -1,7 +1,7 @@
 <!--section4 start-->
 <!--填寫帳戶資料-->
 <section class="section4">
-  <h3 class="title">申請獎金</h3>
+  <h3 class="title">兌換獎金</h3>
   <div class="tips">獎金若不足3000元，郵資匯費由活動參與者吸收</div>
   <div class="money-cont-s">
     <div class="money">2,500元</div>
@@ -45,7 +45,7 @@
             <label for="bankCode">銀行代碼</label>
             <select class="form-control" id="bankCode" formControlName="bankCode" [required]="mytype=='現金匯款'">
                   <option selected>請選擇</option>
-                  <option *ngFor="let item of bankNum">{{item}}</option>
+                  <option *ngFor="let item of bankNum; let i = index" [value]="bankValue[i]">{{item}}</option>
                 </select>
           </div>
           <div class="form-group form-group-lg col-sm-6 col-xs-12">

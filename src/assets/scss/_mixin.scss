@@ -33,6 +33,7 @@
 
 @mixin scale($scale) {
     -webkit-transform: scale($scale);
+    -moz-transform: scale($scale);
     transform: scale($scale);
 }
 
@@ -51,6 +52,8 @@
 }
 
 @mixin ease($time:0.2s){
+    -webkit-transition: all $time ease-in-out;
+    -moz-transition: all $time ease-in-out;
     transition: all $time ease-in-out;
 }
 

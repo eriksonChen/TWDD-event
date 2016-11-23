@@ -95,7 +95,8 @@ body {
         width: 49%;
         border-radius: 5px;
         .input-group {
-          margin-bottom: 10px;
+          margin-top: 5px;
+          margin-bottom: 5px;
         }
         @media #{$sml} {
           border-radius: 0;
@@ -132,8 +133,13 @@ body {
             top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-animation-name: downIn;
             animation-name: downIn;
+            -webkit-animation-duration: 1.5s;
             animation-duration: 1.5s;
+            -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
           }
           @media #{$sml} {
@@ -214,13 +220,11 @@ body {
       .inputGroup {
         position: relative;
         display: flex;
-        justify-content:space-between;
-        @media #{$sml}{
-            flex-direction: column;
-        }
+        flex-direction: column;
+        margin-bottom: 5px;
       }
       .input-group {
-        width: 49%;
+        width: 70%;
         @media #{$sml} {
           width: 100%;
         }
@@ -240,28 +244,56 @@ body {
           margin-top: 20px;
           @include btnStyle(200px, $Blue, #fff, inherit, $Blue);
         }
+
+        .pass{
+          display: flex;
+          align-items:center;
+          @media #{$sml}{
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .forgetTxt{
+            a{
+               color: red;
+            }
+            padding: 0 10px;
+            @media #{$sml}{
+              padding: 0;
+              margin-bottom: 15px;
+            }
+          }
+        }
       }
     }
     .cont-right {
       h3 {
         margin-top: 0;
       }
+      h4{
+        margin-top: 20px;
+      }
       .app-btn {
         bottom: 30px;
         position: absolute;
         @include btnStyle(200px, #fff, $Blue, $Blue, inherit);
-        @media #{$sml} {
-          position: relative;
-          margin-top: 5px;
-          bottom: 0;
-        }
       }
       .phone {
         position: absolute;
         left: 60%;
         bottom: 0;
         width: 100%;
-        @media #{$sml} {
+      }
+      @media #{$sml} {
+        margin-top: 1px;
+        h4{
+          margin-top: 0;
+        }
+        .app-btn{
+          position: relative;
+          margin-top: 5px;
+          bottom: 0;
+        }
+        .phone{
           position: relative;
           text-align: center;
           left: inherit;
@@ -269,9 +301,6 @@ body {
           width: 70%;
           border-bottom: 1px solid $textGray;
         }
-      }
-      @media #{$sml} {
-        margin-top: 1px;
       }
     }
   }
@@ -626,6 +655,39 @@ body {
       line-height: 40px;
       margin: 0 10px;
     }
+  }
+  .forget-pop{
+    width: 500px;
+    height: 350px;
+    text-align: center;
+    .glyphicon{
+      top: 0;
+    }
+    .forget-txt{
+      margin-top: 35px;
+    }
+    .input-group{
+      margin: 20px;
+    }
+    .send-cont{
+      margin-top: 30px;
+    }
+    .btn{
+      width: 200px;
+    }
+    .info-txt{
+      color: $Blue;
+    }
+
+    @media #{$sml}{
+      .btn{
+        width: 100%;
+      }
+      .input-group{
+        margin: 20px 0;
+      }
+    }
+
   }
   .pop-cont {
     position: absolute;

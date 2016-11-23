@@ -89,6 +89,8 @@ export class FormComponent implements OnInit {
           '812	台新銀行',	'814	大眾銀行',	'815	日盛銀行',	'816	安泰銀行',
           '822	中國信託',	'825	慶豐銀行'];
 
+  bankValue=this.bankNum.map((va)=> va.slice(0,3));
+
 
   ngOnInit() {
     

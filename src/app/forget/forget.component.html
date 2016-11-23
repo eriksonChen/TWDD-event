@@ -1,0 +1,26 @@
+<div class="popup" style="display:block">
+  <div class="pop-cont forget-pop">
+    <div class="pop-close" (click)='closeBtn()'>
+      <img src="./assets/img/close.svg" alt="">
+    </div>
+    <div class="pop-title">忘記密碼</div>
+    <div class="forget-txt">請輸入您註冊的手機號碼，系統會傳送簡訊至你的手機。</div>
+    <form (ngSubmit)="sendPassowrd()">
+      <div class="inputGroup">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
+          <input type="tel" class="form-control" name="cell" maxlength="10" pattern="09[1-8][0-9]{7}" [(ngModel)]="cell"
+            placeholder="你的手機號碼" required>
+        </div>
+        <div class="send-cont">
+          <div class="send-btn" [hidden]="isSend">
+            <button type="submit" class="btn btn-primary btn-lg send-btn">送出簡訊</button>
+          </div>
+          <div class="info-txt" [hidden]="!isSend">資料已送出，請候系統發送簡訊至您的手機</div>
+        </div>
+        
+      </div>
+    </form>
+    </div>
+    <div class="pop-bg" (click)="closeBtn()"></div>
+  </div>
