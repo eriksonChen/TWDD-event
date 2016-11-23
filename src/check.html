@@ -14,7 +14,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" type="" href="./assets/css/check.css">
 </head>
 
@@ -27,10 +26,10 @@
       <div class="logo">
         <img src="./assets/img/logo2.png" alt="">
       </div>
-      <div class="title">您獲得<span class="user">子莊</span>的台灣代駕APP下載邀請</div>
-      <p class="txt">請立即下載APP並輸入邀請碼即可享有三趟各100元，共計300元的現金回饋。</p>
-      <a class="btn btn-primary btn-lg" href="http://www.twdd.com.tw/download/" role="button">下載台灣代駕APP</a>
-      <p></p>
+      <div class="title">您得到邀請人<span class="user">子莊</span>的優惠訊息</div>
+      <p class="txt">是否保留三趟各100元<br>共300元的使用優惠?</p>
+      <a class="btn btn-primary btn-lg" href="http://www.twdd.com.tw/download/" role="button">下載應用程式</a>
+      <div class="request">註冊時輸入<span class="code">A1B2C3</span>邀請碼</div>
     </div>
   </div>
   <!-- jQuery (Bootstrap 所有外掛均需要使用) -->
@@ -57,7 +56,9 @@
     }
 
     var userName = paValue('na'); 
+    var code = paValue('code'); 
     $('.user').html(userName);
+    $('.code').html(code);
 
     console.log("user name : " + userName);
 

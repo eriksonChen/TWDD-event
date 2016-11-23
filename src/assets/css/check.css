@@ -64,13 +64,13 @@ P {
       margin: 0 auto 30px; }
       .container .wrap .logo img {
         width: 120px;
-        border-radius: 8px;
+        border-radius: 22px;
         border: 1px solid #d9d9d9;
         -webkit-box-shadow: 0px 2px 15px -6px rgba(0, 0, 0, 0.5);
         box-shadow: 0px 2px 15px -6px rgba(0, 0, 0, 0.5); }
     .container .wrap .title {
-      font-size: 24px;
-      padding: 0 15px;
+      font-size: 22px;
+      padding: 0;
       font-weight: bold;
       margin-bottom: 10px;
       /*color: $lightBlue;*/ }
@@ -81,6 +81,10 @@ P {
       font-size: 18px;
       font-weight: 500;
       line-height: 1.5; }
+    .container .wrap .request {
+      margin-top: 10px; }
+      .container .wrap .request .code {
+        color: red; }
     .container .wrap .btn {
       /*margin-top: 20px;*/
       border: none;

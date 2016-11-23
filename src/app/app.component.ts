@@ -17,7 +17,7 @@ export class AppComponent implements OnInit, OnDestroy{
   isForget = false;
   fbapi='1035112683277194';
   url='http://twdd.com.tw';
-  fbpic='http://event.twdd.com.tw/assets/img/fb.jpg';
+  fbpic='http://event.twdd.com.tw/assets/img/fb2.jpg';
   download="http://event.twdd.com.tw/check.html?na=";
   code:string;//認證碼
   vcode:string;
@@ -40,7 +40,6 @@ export class AppComponent implements OnInit, OnDestroy{
 
   onLogin(){
     if(this.user['captcha']){
-      console.log(this.user['captcha']);
       this.loginTo();
     }else{
       alert('請勾選我不是機器人');
@@ -64,6 +63,10 @@ export class AppComponent implements OnInit, OnDestroy{
   }
   qaBtn(){
     this.onSliderUP();
+  }
+
+  appBtn(){
+    window.open("http://www.twdd.com.tw/download/");
   }
 
   homeBtn(){
@@ -105,9 +108,9 @@ export class AppComponent implements OnInit, OnDestroy{
 
   shareBtn(type){
     let title = "暢快飲酒，安全回家";
-    let downloadUrl = this.download + this.user['name'];
-    let fb_des = `昨晚酒後我花450元用APP呼叫酒後代駕，路上遇酒測攔檢，馬上現省九萬罰單。你也快下載台灣代駕APP，期限內輸入我的推薦碼 ${this.code}，還送三趟百元⾞車車資折抵`;
-    let line_des = `昨晚酒後我花450元用APP呼叫酒後代駕，路上遇酒測攔檢，馬上現省九萬罰單。你也快下載 ${downloadUrl}，期限內輸入我的推薦碼 ${this.code}，還送三趟百元⾞車車資折抵`;
+    let downloadUrl =` ${this.download}${this.user['name']}&code=${this.code}`;
+    let fb_des = `昨晚酒後我花450元用APP呼叫酒後代駕，路上遇酒測攔檢，馬上現省九萬罰單。你也快下載台灣代駕APP，期限內輸入我的推薦碼 ${this.code}，還送三趟百元車資折抵`;
+    let line_des = `昨晚酒後我花450元用APP呼叫酒後代駕，路上遇酒測攔檢，馬上現省九萬罰單。你也快下載  ${encodeURIComponent(downloadUrl)} ，期限內輸入我的推薦碼 ${this.code}，還送三趟百元車資折抵`;
     if(type=="fb"){
       this.shareFb(downloadUrl,title,fb_des,this.fbpic);
     }
@@ -126,9 +129,9 @@ export class AppComponent implements OnInit, OnDestroy{
       picture: pic
     }, (response)=> {
       if (response) {
-        console.log(response.post_id);
+        // console.log(response.post_id);
       } else {
-        console.log('no share');
+        // console.log('no share');
       }
     });
     // let share_fb = `https://www.facebook.com/dialog/feed?app_id=${this.fbapi}&display=popup&caption&link=` +encodeURIComponent(share_u) +`&redirect_uri=${this.url}close.html&picture=` + encodeURIComponent(pic) +`&description=` + encodeURIComponent(fb_des) +`&name=` + encodeURIComponent(title);
@@ -136,7 +139,8 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   shareLine(str){
-    let url = 'http://line.naver.jp/R/msg/text/?'+encodeURIComponent(str)
+      console.log(str);
+    let url = 'http://line.naver.jp/R/msg/text/?'+str;
     window.open(url);
   }
 
