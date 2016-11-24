@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy{
   fbapi='1035112683277194';
   url='http://twdd.com.tw';
   fbpic='http://event.twdd.com.tw/assets/img/fb2.jpg';
+  twddapp="http://s.ad-locus.com/twdd";
   download="http://event.twdd.com.tw/check.html?na=";
   code:string;//認證碼
   vcode:string;
@@ -109,8 +110,9 @@ export class AppComponent implements OnInit, OnDestroy{
   shareBtn(type){
     let title = "暢快飲酒，安全回家";
     let downloadUrl =` ${this.download}${this.user['name']}&code=${this.code}`;
-    let fb_des = `昨晚酒後我花450元用APP呼叫酒後代駕，路上遇酒測攔檢，馬上現省九萬罰單。你也快下載台灣代駕APP，期限內輸入我的推薦碼 ${this.code}，還送三趟百元車資折抵`;
-    let line_des = `昨晚酒後我花450元用APP呼叫酒後代駕，路上遇酒測攔檢，馬上現省九萬罰單。你也快下載  ${encodeURIComponent(downloadUrl)} ，期限內輸入我的推薦碼 ${this.code}，還送三趟百元車資折抵`;
+    let fb_des = `開車去喝酒，酒後找台灣代駕，10公里內450元起，嚴格篩選司機，享代駕責任保險。
+                  快下載APP，${this.twddapp}，使用邀請碼 ${this.code}，註冊會員再享前三趟100元共300元折扣`;
+    let line_des = `開車去喝酒，酒後找台灣代駕，10公里內450元起，嚴格篩選司機，享代駕責任保險，快下載APP ${encodeURIComponent(downloadUrl)} ，使用邀請碼 ${this.code}，註冊會員再享前三趟100元共300元折扣`;
     if(type=="fb"){
       this.shareFb(downloadUrl,title,fb_des,this.fbpic);
     }
