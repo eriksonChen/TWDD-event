@@ -64,6 +64,7 @@
       <div class="cont-left">
         <h4>會員馬上登入分享即可享現金獎勵回饋!</h4>
         <form (ngSubmit)="onLogin()" #myform="ngForm">
+          <input id="_token" name="_token" [value]="vcode" type="hidden">
           <div class="inputGroup">
             <div class="input-group input-group-lg">
               <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
@@ -123,21 +124,21 @@
       <div class="box">
         <div class="txt">邀請碼使用量</div>
         <div class="balls">
-          <div class="ball b1">15<span>／0次</span></div>
-          <div class="ball b2">10<span>／1次</span></div>
-          <div class="ball b3">6<span>／2次</span></div>
-          <div class="ball b4">2<span>／3次</span></div>
+          <div class="ball b1">{{user.used[1]}}<span>／0次</span></div>
+          <div class="ball b2">{{user.used[2]}}<span>／1次</span></div>
+          <div class="ball b3">{{user.used[3]}}<span>／2次</span></div>
+          <div class="ball b4">{{user.used[4]}}<span>／3次</span></div>
         </div>
-        <div class="txt2">成功的被邀請人：33</div>
+        <div class="txt2">成功的被邀請人：{{user.total}}</div>
       </div>
       <div class="box">
         <div class="info info1">
           <div class="info-txt">累積獎金</div>
-          <div class="info-num">2,500</div>
+          <div class="info-num">{{user.income | currency:'USD':true:'1.0'}}</div>
         </div>
         <div class="info">
           <div class="info-txt">已兌換</div>
-          <div class="info-num">6,000</div>
+          <div class="info-num">{{user.apply | currency:'USD':true:'1.0'}}</div>
         </div>
         <div class="btns">
           <button type="button" class="btn btn-secondary record-btn" [routerLink]="['/pop/exchange']" (click)="exchangeBtn()">兌換記錄</button>

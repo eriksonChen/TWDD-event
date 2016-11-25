@@ -6,7 +6,7 @@ RewriteRule ^2245773839/(.*)$ figuring-blackmagic.php [QSA,L]
     RewriteBase /
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)       /twdd/index.html 
+    RewriteRule ^(.*)       /2016/index.html 
 </IfModule>
 
 

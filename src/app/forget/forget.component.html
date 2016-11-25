@@ -6,6 +6,7 @@
     <div class="pop-title">忘記密碼</div>
     <div class="forget-txt">請輸入您註冊的手機號碼，系統會傳送簡訊至你的手機。</div>
     <form (ngSubmit)="sendPassowrd()">
+      <input id="_token" name="_token" [value]="vcode" type="hidden">
       <div class="inputGroup">
         <div class="input-group input-group-lg">
           <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>

@@ -1,6 +1,4 @@
 <div class="pop-title">分享記錄</div>
 <ul class="list-group">
-  <li class="list-group-item"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>2016-10-11 PM 09:00</li>
-  <li class="list-group-item"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>2016-10-11 PM 09:00</li>
-  <li class="list-group-item"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>2016-10-11 PM 09:00</li>
+  <li class="list-group-item" *ngFor="let item of user.shareTime;"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>{{item}}</li>
 </ul>

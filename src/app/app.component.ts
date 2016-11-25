@@ -17,36 +17,42 @@ export class AppComponent implements OnInit, OnDestroy{
   isForget = false;
   fbapi='1035112683277194';
   url='http://twdd.com.tw';
-  fbpic='http://event.twdd.com.tw/assets/img/fb2.jpg';
+  fbpic='http://event.twdd.com.tw/2016/assets/img/fb2.jpg';
   twddapp="http://s.ad-locus.com/twdd";
-  download="http://event.twdd.com.tw/check.html?na=";
+  download="http://event.twdd.com.tw/2016/check.html?na=";
   code:string;//認證碼
   user:Object = {};
-  userLogin:Object = {cell:"0915444555", password:"assdf"};
+  userLogin:Object = {cell:"0936173312", password:"H7T6G2M8"};
   vcode="";
   captcha="";
   subs:Subscription;
 
+
   constructor(private router:Router, private twddService:TwddServiceService ){}
 
   ngOnInit(){
-    this.code = 'asdf1234';
-    this.user['name']='子莊';
+    // this.code = 'asdf1234';
     this.subs = this.twddService.getVcode().subscribe(res =>{
       this.vcode = res.vcode;
-      console.log(`get vcode = ${this.vcode}`);
-      $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': `${this.vcode}`
-          }
-      });
+      this.checkInfo();
     },
     err => {
       console.log('Error fetching data');
     });
+  }
 
-    
-
+  checkInfo(){
+    this.twddService.checkLogin().subscribe(res =>{
+      if(res.status==0){
+        console.log('還沒登入');
+      }
+      if(res.status==1){
+        this.loginTo();
+      }
+    },
+    err => {
+      console.log('Error fetching data');
+    });
   }
 
   logError(err) {
@@ -54,16 +60,32 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   onLogin(){
-    if(this.captcha){
-      this.loginTo();
-    }else{
-      alert('請勾選我不是機器人');
-    }
+    this.loginTo();
+    // if(this.captcha){
+    //   this.loginTo();
+    // }else{
+    //   alert('請勾選我不是機器人');
+    // }
   }
   loginTo(){
-    console.log(this.userLogin);
+    this.twddService.apiLogin(this.userLogin).subscribe(res => {
+      console.log(res);
+      if(res.status==0){
+        alert(res.msg);
+      }
+      if(res.status==1){
+        this.user = res;
+        this.twddService.changeUser(this.user);
+        this.code=this.user['code'];
+        this.user['total']=res['used'][1]+res['used'][2]+res['used'][3]+res['used'][4];
+
+        $('.section1').slideUp();
+        this.login=true;
+        this.getList();
+      }
+    })
     // $.ajax({
-    //   type: 'GET',
+    //   type: 'POST',
     //   url: 'http://event.twdd.com.tw/login',
     //   data: $.param(this.userLogin),
     //   success: (res)=>{
@@ -73,17 +95,32 @@ export class AppComponent implements OnInit, OnDestroy{
     //   },
     //   dataType: 'json'
     // });
-    this.twddService.apiLogin(this.userLogin, this.vcode).subscribe(res => {
-      console.log(res);
-      $('.section1').slideUp();
-      this.login=true;
+  }
+
+  getList(){
+    this.twddService.list().subscribe(res => {
+      if(res.status==0){
+        alert(res.msg);
+      }
+      if(res.status==1){
+        this.twddService.changeList(res.data);
+      }
     })
   }
+
+  //忘記密碼
+  forgetBtn(){
+    this.isForget=true;
+  }
+  closeForget(ev){
+    this.isForget=false;
+  }
+
   noteBtn(){
     this.onSliderUP();
   }
   historyBtn(){
-    console.log('分享記錄');
+    // console.log('分享記錄');
   }
   detailsBtn(){
     console.log('詳情說明');
@@ -113,14 +150,6 @@ export class AppComponent implements OnInit, OnDestroy{
     }, 600);
   }
 
-  //忘記密碼
-  forgetBtn(){
-    this.isForget=true;
-  }
-  closeForget(ev){
-    this.isForget=false;
-  }
-
   getForm(){
     this.form=true;
     setTimeout(()=>{
@@ -138,7 +167,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   shareBtn(type){
     let title = "暢快飲酒，安全回家";
-    let downloadUrl =` ${this.download}${this.user['name']}&code=${this.code}`;
+    let downloadUrl =` ${this.download}${this.user['UserName']}&code=${this.code}`;
     let fb_des = `開車去喝酒，酒後找台灣代駕，10公里內450元起，嚴格篩選司機，享代駕責任保險。
                   快下載APP，${this.twddapp}，使用邀請碼 ${this.code}，註冊會員再享前三趟100元共300元折扣`;
     let line_des = `開車去喝酒，酒後找台灣代駕，10公里內450元起，嚴格篩選司機，享代駕責任保險，快下載APP ${encodeURIComponent(downloadUrl)} ，使用邀請碼 ${this.code}，註冊會員再享前三趟100元共300元折扣`;

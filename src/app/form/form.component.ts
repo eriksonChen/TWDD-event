@@ -1,3 +1,4 @@
+import { TwddServiceService } from './../twdd-service.service';
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -10,32 +11,22 @@ import { User } from './form';
 
 export class FormComponent implements OnInit {
   twddForm:FormGroup;
-
-
-  // twddForm = new FormGroup({
-  //   name : new FormControl('',Validators.maxLength(1)),
-  //   idno : new FormControl(''),
-  //   address : new FormControl(''),
-  //   type : new FormControl(''),
-  //   coupon : new FormControl(''),
-  //   bankCode : new FormControl(''),
-  //   bankName : new FormControl(''),
-  //   account : new FormControl('')
-  // })
-  mytype="現金禮券";
-  ischeck=false;
+  mytype=2;
+  isSend=false;
   wait=false;
+  money="";
+
   
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, private twddService:TwddServiceService) {
     this.twddForm = fb.group({
-      myname : "erikson",
+      name : "",
       idno : "",
       address : "",
       type : "現金匯款",
       coupon : "SOGO禮券",
       bankCode : "",
       bankName : "",
-      account : "",
+      bankAccount : "",
       check:false
     })
    }
@@ -93,7 +84,17 @@ export class FormComponent implements OnInit {
 
 
   ngOnInit() {
-    
+    this.money = this.twddService.getUser()['income'];
+    console.log(this.money);
+  }
+
+
+  checkId(string){
+    let re = /^[A-Z]\d{9}$/;
+    if (re.test(string))
+      return true;
+    else
+      return false;
   }
 
   onSubmit(){
@@ -105,12 +106,24 @@ export class FormComponent implements OnInit {
       alert('請同意活動條款及獎金稅務說明及發放說明');
       return;
     }
-    setTimeout(()=>{
-      alert('資料已上傳');
-      console.log(this.twddForm.value);
-      this.wait=true;
-    },1000)
-    
+
+    if(this.twddForm.value['type']==1){
+      this.twddForm.value['coupon']="";
+    }
+
+    this.wait=true;
+
+    this.twddService.sendApply(this.twddForm.value).subscribe(res => {
+      if(res.status==0){
+        alert(res.msg);
+        this.wait=false;
+      }
+      if(res.status==1){
+        alert('資料已上傳');
+        console.log(this.twddForm.value);
+        
+      }
+    })
 
   }
 

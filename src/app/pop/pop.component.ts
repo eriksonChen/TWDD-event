@@ -1,5 +1,5 @@
 import {Router} from '@angular/router';
-import {Component,OnInit} from '@angular/core';
+import {Component,OnInit, Input} from '@angular/core';
 
 @Component({
   // selector: 'app-pop',
@@ -12,6 +12,7 @@ export class PopComponent implements OnInit {
   isQa = false;
   isDetails = false;
   isExchange = false;
+  // @Input('user') private user:any;
 
   constructor(private router: Router) {
     this.onPage(this.router.url);
@@ -19,6 +20,7 @@ export class PopComponent implements OnInit {
 
   ngOnInit() {
     $('.popup').fadeIn('fast');
+    // console.log(this.user);
   }
 
   onPage(str) {

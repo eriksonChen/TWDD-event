@@ -1,3 +1,4 @@
+import { TwddServiceService } from './../twdd-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './exchange.component.html'
 })
 export class ExchangeComponent implements OnInit {
+  apply_list=[];
 
-  constructor() { }
+  constructor(private twddService:TwddServiceService) { }
 
   ngOnInit() {
+    this.apply_list = this.twddService.getList();
   }
 
 }
