@@ -21,8 +21,10 @@ export class AppComponent implements OnInit, OnDestroy{
   twddapp="http://s.ad-locus.com/twdd";
   download="http://event.twdd.com.tw/check.html?na=";
   code:string;//認證碼
-  vcode:string;
-  user:Object={phone:"", password:""};
+  user:Object = {};
+  userLogin:Object = {cell:"0915444555", password:"assdf"};
+  vcode="";
+  captcha="";
   subs:Subscription;
 
   constructor(private router:Router, private twddService:TwddServiceService ){}
@@ -33,22 +35,49 @@ export class AppComponent implements OnInit, OnDestroy{
     this.subs = this.twddService.getVcode().subscribe(res =>{
       this.vcode = res.vcode;
       console.log(`get vcode = ${this.vcode}`);
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': `${this.vcode}`
+          }
+      });
     },
     err => {
       console.log('Error fetching data');
     });
+
+    
+
+  }
+
+  logError(err) {
+    alert('error: ' + err);
   }
 
   onLogin(){
-    if(this.user['captcha']){
+    if(this.captcha){
       this.loginTo();
     }else{
       alert('請勾選我不是機器人');
     }
   }
   loginTo(){
-    $('.section1').slideUp();
-    this.login=true;
+    console.log(this.userLogin);
+    // $.ajax({
+    //   type: 'GET',
+    //   url: 'http://event.twdd.com.tw/login',
+    //   data: $.param(this.userLogin),
+    //   success: (res)=>{
+    //     console.log(res);
+    //     $('.section1').slideUp();
+    //   this.login=true;
+    //   },
+    //   dataType: 'json'
+    // });
+    this.twddService.apiLogin(this.userLogin, this.vcode).subscribe(res => {
+      console.log(res);
+      $('.section1').slideUp();
+      this.login=true;
+    })
   }
   noteBtn(){
     this.onSliderUP();
@@ -67,7 +96,7 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   appBtn(){
-    window.open("http://www.twdd.com.tw/download/");
+    window.open(this.twddapp);
   }
 
   homeBtn(){

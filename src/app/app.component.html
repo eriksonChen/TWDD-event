@@ -67,18 +67,18 @@
           <div class="inputGroup">
             <div class="input-group input-group-lg">
               <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
-              <input type="tel" class="form-control" name="user_phone" maxlength="10" pattern="09[1-8][0-9]{7}" [(ngModel)]="user.phone"
+              <input type="tel" class="form-control" ngModel name="cell" maxlength="10" pattern="09[1-8][0-9]{7}" [(ngModel)]="userLogin.cell"
                 placeholder="你的手機號碼" required>
             </div>
             <div class="pass">
               <div class="input-group input-group-lg">
                 <span class="input-group-addon glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-                <input type="password" class="form-control" name="password" [(ngModel)]="user.password" placeholder="密碼" required>
+                <input type="password" class="form-control" ngModel name="password" [(ngModel)]="userLogin.password" placeholder="密碼" required>
               </div>
               <span class="forgetTxt"><a href="javascript:;" (click)="forgetBtn()">忘記密碼?</a></span>
             </div>
           </div>
-          <recaptcha [(ngModel)]="user.captcha" name="captcha" required [siteKey]="recaptchaSiteKey"></recaptcha>
+          <recaptcha [(ngModel)]="captcha" name="captcha" required [siteKey]="recaptchaSiteKey"></recaptcha>
           <button type="submit" class="btn btn-secondary login-btn">登入</button>
         </form>
       </div>
