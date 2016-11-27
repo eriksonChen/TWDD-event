@@ -27,17 +27,48 @@ export class AppComponent implements OnInit, OnDestroy{
   captcha="";
   subs:Subscription;
 
+  income:string;
 
-  constructor(private router:Router, private twddService:TwddServiceService ){}
+  isTest = true;//是否測試用....========================================
+  testUser:Object = {
+    UserName : "劉子莊",
+    income:2000,
+    shareTime:['2016-10-22 23:25'],
+    code:"A1B2C3",
+    used:{1:10, 2:12, 3:33, 4:45},
+    apply:3500
+  }
+  //test =============================================================
+
+  constructor(private router:Router, private twddService:TwddServiceService ){
+    this.twddService.missionUser$.subscribe(res => {
+      console.log('=======================')
+      console.log(res);
+      this.user = res;
+      this.code=this.user['code'];
+      this.user['total']=res['used'][1]+res['used'][2]+res['used'][3]+res['used'][4];
+    })
+  }
 
   ngOnInit(){
-    // this.code = 'asdf1234';
-    this.subs = this.twddService.getVcode().subscribe(res =>{
+
+    // test=======================================================================================
+    if(this.isTest){
+      console.log('is test version');
+      this.vcode = "test123456789";
+      this.twddService.setupVcode(this.vcode);
+      return;
+    }
+    // test=======================================================================================
+
+    this.subs = this.twddService.apiVcode().subscribe(res =>{
       this.vcode = res.vcode;
+      this.twddService.setupVcode(this.vcode);
       this.checkInfo();
     },
     err => {
       console.log('Error fetching data');
+
     });
   }
 
@@ -46,55 +77,56 @@ export class AppComponent implements OnInit, OnDestroy{
       if(res.status==0){
         console.log('還沒登入');
       }
+      //已登入直接到下一步
       if(res.status==1){
-        this.loginTo();
+        // this.loginTo();
+        this.nextStep(res);
       }
     },
     err => {
-      console.log('Error fetching data');
+      // console.log('Error fetching data');
     });
   }
 
-  logError(err) {
-    alert('error: ' + err);
-  }
-
   onLogin(){
-    this.loginTo();
+    this.loginTo();  //test ======================================================
+
+    //上線時請將下面註解拿掉=================================================================
+
     // if(this.captcha){
     //   this.loginTo();
     // }else{
     //   alert('請勾選我不是機器人');
     // }
+
+    //=======================================================================================
   }
+
   loginTo(){
+    this.userLogin['_token'] = this.vcode;
     this.twddService.apiLogin(this.userLogin).subscribe(res => {
-      console.log(res);
       if(res.status==0){
         alert(res.msg);
       }
       if(res.status==1){
-        this.user = res;
-        this.twddService.changeUser(this.user);
-        this.code=this.user['code'];
-        this.user['total']=res['used'][1]+res['used'][2]+res['used'][3]+res['used'][4];
-
-        $('.section1').slideUp();
-        this.login=true;
-        this.getList();
+        this.nextStep(res);
       }
-    })
-    // $.ajax({
-    //   type: 'POST',
-    //   url: 'http://event.twdd.com.tw/login',
-    //   data: $.param(this.userLogin),
-    //   success: (res)=>{
-    //     console.log(res);
-    //     $('.section1').slideUp();
-    //   this.login=true;
-    //   },
-    //   dataType: 'json'
-    // });
+    },
+    err => {
+      this.nextStep(this.testUser);
+    });
+  }
+
+  //登入後進到下一步
+  nextStep(res){
+    this.twddService.changeUser(res);
+
+    $('.section1').slideUp();
+    this.login=true;
+    if(!this.isTest){
+      this.getList();
+    }
+    
   }
 
   getList(){
@@ -123,10 +155,10 @@ export class AppComponent implements OnInit, OnDestroy{
     // console.log('分享記錄');
   }
   detailsBtn(){
-    console.log('詳情說明');
+    // console.log('詳情說明');
   }
   exchangeBtn(){
-    console.log('兌換記錄');
+    // console.log('兌換記錄');
   }
   qaBtn(){
     this.onSliderUP();
@@ -150,13 +182,26 @@ export class AppComponent implements OnInit, OnDestroy{
     }, 600);
   }
 
+  //打開form表
   getForm(){
+    if(this.user['income']==0){
+      alert('您目前無任何獎金可申請');
+      return;
+    }
+
     this.form=true;
     setTimeout(()=>{
       $( "body, html" ).animate({
         scrollTop: $('app-form').offset().top-50
       }, 600);
     },100);
+  }
+
+  //關掉form表
+  formClose(){
+    $('app-form').slideUp(()=>{
+      this.form = false;
+    });
   }
 
   onSliderUP(){
@@ -194,8 +239,6 @@ export class AppComponent implements OnInit, OnDestroy{
         // console.log('no share');
       }
     });
-    // let share_fb = `https://www.facebook.com/dialog/feed?app_id=${this.fbapi}&display=popup&caption&link=` +encodeURIComponent(share_u) +`&redirect_uri=${this.url}close.html&picture=` + encodeURIComponent(pic) +`&description=` + encodeURIComponent(fb_des) +`&name=` + encodeURIComponent(title);
-    // window.open(share_fb, 'sharer', 'toolbar=0,status=0,width=625,height=583');
   }
 
   shareLine(str){

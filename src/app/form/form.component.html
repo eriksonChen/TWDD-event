@@ -4,14 +4,14 @@
   <h3 class="title">兌換獎金</h3>
   <div class="tips">獎金若不足3000元，郵資匯費由活動參與者吸收</div>
   <div class="money-cont-s">
-    <div class="money">{{money | currency:'USD':true:'1.0'}}元</div>
+    <div class="money">{{user.income | currency:'USD':true:'1.0'}}元</div>
     <div class="money-txt">可兌換獎金</div>
     <div class="money-pic"><img src="./assets/img/money.png" alt=""></div>
   </div>
   <div class="cont">
     <div class="cont-left">
       <form role="form" [formGroup]="twddForm" (ngSubmit)="onSubmit()">
-        <input id="_token" name="_token" value="" type="hidden">
+        <input id="_token" formControlName="_token" type="hidden">
         <div class="form-group form-group-lg col-sm-6 col-xs-12">
           <label for="myname">姓名</label>
           <input type="text" class="form-control" formControlName="name" id="name" placeholder="請輸入正確姓名" required>
@@ -43,30 +43,29 @@
         <div class="account-info col-sm-12" [hidden]="mytype!=1">
           <div class="form-group form-group-lg col-sm-6 col-xs-12">
             <label for="bankCode">銀行代碼</label>
-            <select class="form-control" id="bankCode" formControlName="bankCode" [required]="mytype=='現金匯款'">
-                  <option selected>請選擇</option>
+            <select class="form-control" id="bankCode" formControlName="bankCode" [required]="mytype==1">
                   <option *ngFor="let item of bankNum; let i = index" [value]="bankValue[i]">{{item}}</option>
                 </select>
           </div>
           <div class="form-group form-group-lg col-sm-6 col-xs-12">
             <label for="bankName">分行</label>
-            <input type="text" class="form-control" id="bankName" formControlName="bankName" placeholder="請填寫分行名稱" [required]="mytype=='現金匯款'">
+            <input type="text" class="form-control" id="bankName" formControlName="bankName" placeholder="請填寫分行名稱" [required]="mytype==1">
           </div>
           <div class="form-group form-group-lg col-xs-12">
             <label for="bankAccount">銀行帳號</label>
-            <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="bankAccount" formControlName="bankAccount" [required]="mytype=='現金匯款'">
+            <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="bankAccount" formControlName="bankAccount" [required]="mytype==1">
           </div>
         </div>
         <div class="checkbox col-xs-12">
           <label>
-                <input type="checkbox" formControlName="check"> 我已同意<a class="note-btn" href="javascript:;">活動條款</a>、獎金的稅務說明及發放說明
+                <input type="checkbox" formControlName="check"> 我已同意<a class="note-btn" href="javascript:;" [routerLink]="['/pop/note']" required>活動條款</a>、獎金的稅務說明及發放說明
               </label>
         </div>
         <button type="submit" class="btn btn-default submit-btn btn-disable col-xs-12">資料送出</button>
       </form>
     </div>
     <div class="cont-right money-cont">
-      <div class="money">{{money | currency:'USD':true:'1.0'}}元</div>
+      <div class="money">{{user.income | currency:'USD':true:'1.0'}}元</div>
       <div class="money-txt">可兌換獎金</div>
       <div class="money-pic"><img src="./assets/img/money.png" alt=""></div>
     </div>

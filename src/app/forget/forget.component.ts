@@ -1,5 +1,5 @@
 import { TwddServiceService } from './../twdd-service.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-forget',
@@ -7,17 +7,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ForgetComponent implements OnInit {
   @Output() close = new EventEmitter();
+  @Input() vcode:string;
   cell="";
   isSend=false;
-  vcode="";
 
   constructor(private twddService:TwddServiceService) { 
-    this.twddService.getVcode().subscribe(res =>{
-      this.vcode = res.vcode;
-    })
   }
 
   ngOnInit() {
+    console.log('vcode = ' + this.vcode);
   }
 
   sendPassowrd(){
@@ -27,7 +25,7 @@ export class ForgetComponent implements OnInit {
   }
 
   submitCell(){
-    let obj={cell:this.cell};
+    let obj={cell:this.cell, _token:this.vcode};
     // $.ajax({
     //   type: 'POST',
     //   url: 'http://event.twdd.com.tw/forget',

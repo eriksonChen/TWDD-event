@@ -1,5 +1,5 @@
 <!--選單-->
-<app-forget (close)="closeForget($event)" [hidden]="!isForget"></app-forget>
+<app-forget [vcode]="vcode" (close)="closeForget($event)" [hidden]="!isForget" *ngIf="vcode"></app-forget>
 <nav id="nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -12,7 +12,7 @@
       </button>
       <!--<a class="navbar-brand" href="javascript:;">台灣代駕</a>-->
       <div class="logo">
-        <a [routerLink]="['/']">
+        <a href="http://twdd.com.tw" target="_blank">
           <img src="./assets/img/logo.png" width="40">
         </a>
       </div>
@@ -148,6 +148,6 @@
     </div>
   </section>
   <!--section3 end-->
-  <app-form *ngIf="form"></app-form>
+  <app-form *ngIf="form" (closeForm) = "formClose()"></app-form>
 </div>
 <router-outlet></router-outlet>
