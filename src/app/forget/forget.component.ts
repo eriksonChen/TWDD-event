@@ -15,7 +15,7 @@ export class ForgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('vcode = ' + this.vcode);
+    
   }
 
   sendPassowrd(){

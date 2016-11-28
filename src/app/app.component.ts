@@ -22,14 +22,15 @@ export class AppComponent implements OnInit, OnDestroy{
   download="http://event.twdd.com.tw/2016/check.html?na=";
   code:string;//認證碼
   user:Object = {};
-  userLogin:Object = {cell:"0936173312", password:"H7T6G2M8"};
+  // userLogin:Object = {cell:"0936173312", password:"a611003"};
+  userLogin:Object = {cell:"", password:""};
   vcode="";
   captcha="";
   subs:Subscription;
 
   income:string;
 
-  isTest = true;//是否測試用....========================================
+  isTest = false;//是否測試用....========================================
   testUser:Object = {
     UserName : "劉子莊",
     income:2000,
@@ -75,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy{
   checkInfo(){
     this.twddService.checkLogin().subscribe(res =>{
       if(res.status==0){
-        console.log('還沒登入');
+        // console.log('還沒登入');
       }
       //已登入直接到下一步
       if(res.status==1){
@@ -89,15 +90,15 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   onLogin(){
-    this.loginTo();  //test ======================================================
+    // this.loginTo();  //test ======================================================
 
     //上線時請將下面註解拿掉=================================================================
 
-    // if(this.captcha){
-    //   this.loginTo();
-    // }else{
-    //   alert('請勾選我不是機器人');
-    // }
+    if(this.captcha){
+      this.loginTo();
+    }else{
+      alert('請勾選我不是機器人');
+    }
 
     //=======================================================================================
   }

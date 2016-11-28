@@ -12,7 +12,7 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.twddService.getUser();
-
+    console.log(this.user);
   }
 
 }

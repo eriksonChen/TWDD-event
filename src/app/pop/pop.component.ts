@@ -27,7 +27,7 @@ export class PopComponent implements OnInit {
     if (str.indexOf('note') != -1) {
       this.isNote = true;
     }
-    if (str.indexOf('history') != -1) {
+    if (str.indexOf('hist') != -1) {
       this.isHistory = true;
     }
     if (str.indexOf('details') != -1) {
@@ -42,7 +42,8 @@ export class PopComponent implements OnInit {
   }
 
   closeBtn() {
-    this.router.navigate([''])
+    this.router.navigate(['']);
+    $('.popup').fadeOut('fast');
   }
 
 }

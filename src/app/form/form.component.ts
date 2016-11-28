@@ -12,14 +12,12 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class FormComponent implements OnInit {
   @Output() closeForm = new EventEmitter();
   twddForm: FormGroup;
-  bankNum=[];
-  bankValue=[];
+  bankNum = [];
+  bankValue = [];
   mytype = 2;
   isSend = false;
   wait = false;
   user = {};
-
-
   constructor(private fb: FormBuilder, private twddService: TwddServiceService) {
     this.twddForm = fb.group({
       name: "",
@@ -42,9 +40,9 @@ export class FormComponent implements OnInit {
   }
 
   //讀取銀行代碼資料
-  getBank(){
+  getBank() {
     this.twddService.getBank().then(res => {
-      this.bankNum = res;  
+      this.bankNum = res;
       this.bankValue = this.bankNum.map((va) => va.slice(0, 3));
     })
   }
@@ -65,29 +63,48 @@ export class FormComponent implements OnInit {
       return;
     }
 
-    // test==================================================
-    this.onSubmitReady();
-    // test==================================================
 
     if (this.wait) {
       return
     }
 
+    this.wait = true;
+    let txt = "";
+
     if (this.twddForm.value['type'] == 1) {
       this.twddForm.value['coupon'] = "";
+      txt = `銀行代碼:${this.twddForm.value['bankCode']}
+        分行:${this.twddForm.value['bankName']}
+        銀行帳號:${this.twddForm.value['bankAccount']}`;
+    } else {
+      txt = `要申請的禮券:${this.twddForm.value['coupon']}`;
     }
 
-    this.wait = true;
+    var conf = confirm(`請確認您的資料
 
-    this.twddService.sendApply(this.twddForm.value).subscribe(res => {
-      if (res.status == 0) {
-        alert(res.msg);
-        this.wait = false;
-      }
-      if (res.status == 1) {
-        this.onSubmitReady();
-      }
-    })
+        姓名:${this.twddForm.value['name']}
+        身份證:${this.twddForm.value['idno']}
+        地址:${this.twddForm.value['address']}
+        ${txt}
+      `);
+    if (conf) {
+      // test==================================================
+      // this.onSubmitReady();
+      // test==================================================
+
+
+      this.twddService.sendApply(this.twddForm.value).subscribe(res => {
+        if (res.status == 0) {
+          alert(res.msg);
+          this.wait = false;
+        }
+        if (res.status == 1) {
+          this.onSubmitReady();
+        }
+      });
+    } else {
+      this.wait = false;
+    }
 
   }
 
@@ -99,5 +116,6 @@ export class FormComponent implements OnInit {
     this.twddService.changeUser(this.user);
     this.closeForm.emit();
   }
+
 
 }
