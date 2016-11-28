@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy{
   download="http://event.twdd.com.tw/2016/check.html?na=";
   code:string;//認證碼
   user:Object = {};
-  // userLogin:Object = {cell:"0936173312", password:"a611003"};
+  // userLogin:Object = {cell:"0936173312", password:"611003"};
   userLogin:Object = {cell:"", password:""};
   vcode="";
   captcha="";
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   income:string;
 
-  isTest = false;//是否測試用....========================================
+  isTest = true;//是否測試用....========================================
   testUser:Object = {
     UserName : "劉子莊",
     income:2000,
