@@ -30,7 +30,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   income:string;
 
-  isTest = true;//是否測試用....========================================
+  isTest = false;//是否測試用....========================================
   testUser:Object = {
     UserName : "劉子莊",
     income:2000,
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit, OnDestroy{
       console.log(res);
       this.user = res;
       this.code=this.user['code'];
-      this.user['total']=res['used'][1]+res['used'][2]+res['used'][3]+res['used'][4];
+      this.user['total']=res['used'][0]+res['used'][1]+res['used'][2]+res['used'][3];
     })
   }
 

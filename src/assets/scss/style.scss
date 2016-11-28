@@ -609,13 +609,19 @@ body {
         font-size: 18px;
         line-height: 1.8;
         margin-left: 20px;
-        margin-bottom: 5px;
+        margin-bottom: 15px;
+        .title{
+          font-weight: bold;
+          margin-top: 10px;
+        }
         ul li{
-          list-style: inherit;
+          list-style: lower-latin;
+          margin-bottom: 5px;
         }
       }
     }
   }
+
   .qa-pop {
     width: 750px;
     height: auto;
