@@ -10,8 +10,8 @@
       <div class="inputGroup">
         <div class="input-group input-group-lg">
           <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
-          <input type="tel" class="form-control" name="cell" maxlength="10" pattern="09[1-8][0-9]{7}" [(ngModel)]="cell"
-            placeholder="你的手機號碼" required>
+          <input type="tel" class="form-control" name="cell" maxlength="10" pattern="09[1-8][0-9]{7}" [(ngModel)]="cell" placeholder="你的手機號碼"
+            required>
         </div>
         <div class="send-cont">
           <div class="send-btn" [hidden]="isSend">
@@ -19,9 +19,8 @@
           </div>
           <div class="info-txt" [hidden]="!isSend">資料已送出，請候系統發送簡訊至您的手機</div>
         </div>
-        
       </div>
     </form>
-    </div>
-    <div class="pop-bg" (click)="closeBtn()"></div>
   </div>
+  <div class="pop-bg" (click)="closeBtn()"></div>
+</div>

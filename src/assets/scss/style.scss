@@ -244,20 +244,19 @@ body {
           margin-top: 20px;
           @include btnStyle(200px, $Blue, #fff, inherit, $Blue);
         }
-
-        .pass{
+        .pass {
           display: flex;
-          align-items:center;
-          @media #{$sml}{
+          align-items: center;
+          @media #{$sml} {
             flex-direction: column;
             align-items: flex-start;
           }
-          .forgetTxt{
-            a{
-               color: red;
+          .forgetTxt {
+            a {
+              color: red;
             }
             padding: 0 10px;
-            @media #{$sml}{
+            @media #{$sml} {
               padding: 0;
               margin-bottom: 15px;
             }
@@ -269,7 +268,7 @@ body {
       h3 {
         margin-top: 0;
       }
-      h4{
+      h4 {
         margin-top: 20px;
       }
       .app-btn {
@@ -285,15 +284,15 @@ body {
       }
       @media #{$sml} {
         margin-top: 1px;
-        h4{
+        h4 {
           margin-top: 0;
         }
-        .app-btn{
+        .app-btn {
           position: relative;
           margin-top: 5px;
           bottom: 0;
         }
-        .phone{
+        .phone {
           position: relative;
           text-align: center;
           left: inherit;
@@ -610,18 +609,17 @@ body {
         line-height: 1.8;
         margin-left: 20px;
         margin-bottom: 15px;
-        .title{
+        .title {
           font-weight: bold;
           margin-top: 10px;
         }
-        ul li{
+        ul li {
           list-style: lower-latin;
           margin-bottom: 5px;
         }
       }
     }
   }
-
   .qa-pop {
     width: 750px;
     height: auto;
@@ -665,38 +663,116 @@ body {
       margin: 0 10px;
     }
   }
-  .forget-pop{
+  .forget-pop {
     width: 500px;
     height: 350px;
     text-align: center;
-    .glyphicon{
+    .glyphicon {
       top: 0;
     }
-    .forget-txt{
+    .forget-txt {
       margin-top: 35px;
     }
-    .input-group{
+    .input-group {
       margin: 20px;
     }
-    .send-cont{
+    .send-cont {
       margin-top: 30px;
     }
-    .btn{
+    .btn {
       width: 200px;
     }
-    .info-txt{
+    .info-txt {
       color: $Blue;
     }
-
-    @media #{$sml}{
-      .btn{
+    @media #{$sml} {
+      .btn {
         width: 100%;
       }
-      .input-group{
+      .input-group {
         margin: 20px 0;
       }
     }
-
+  }
+  .check-pop {
+    width: 550px;
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    @media #{$sml}{
+      padding: 15px !important;
+    }
+    ul {
+      margin: 0 10px;
+      @media #{$sml}{
+        margin: 0;
+      }
+      li {
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        text-align: left;
+        line-height: 2;
+        border-bottom: 1px solid $lightGray;
+        margin: 0px 5px;
+        padding: 10px 0;
+        .sub {
+          width: 25%;
+        }
+        span {
+          width: 70%;
+          font-weight: bold;
+        }
+        &.line {
+          color: red;
+          border-bottom: 1px solid red;
+        }
+        @media #{$sml} {
+          line-height: 2;
+          .sub {
+            width: 32%;
+          }
+          span {
+            width: 65%;
+          }
+        }
+      }
+    }
+    .check-money {
+      background-color: $lightGray;
+      padding: 0 10px;
+      li {
+        line-height: 2;
+        padding: 3px 0;
+        .sub {
+          flex: 50%;
+          @media #{$sml} {
+          }
+        }
+        span {
+          text-align: right;
+          @media #{$sml} {
+          }
+        }
+      }
+    }
+    .btns {
+      margin: 20px 10px;
+      display: flex;
+      justify-content: space-around;
+      @media #{$sml} {
+        margin: 15px 0 0;
+      }
+      .btn {
+        height: 50px;
+        width: 150px;
+        @media #{$sml} {
+          width: 48%;
+          margin-bottom: 20px;
+        }
+      }
+    }
   }
   .pop-cont {
     position: absolute;

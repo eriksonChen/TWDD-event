@@ -2,7 +2,7 @@
 <!--填寫帳戶資料-->
 <section class="section4">
   <h3 class="title">兌換獎金</h3>
-  <div class="tips">每筆申請手續費30元自獎金餘額中扣除</div>
+  <div class="tips ballRed">每筆申請手續費30元自獎金餘額中扣除</div>
   <div class="money-cont-s">
     <div class="money">{{user.income | currency:'USD':true:'1.0'}}元</div>
     <div class="money-txt">可兌換獎金</div>
@@ -18,11 +18,12 @@
         </div>
         <div class="form-group form-group-lg col-sm-6 col-xs-12">
           <label for="exampleInputId">身份證</label>
-          <input type="text" class="form-control" formControlName="idno" pattern="^[A-Z]\d{9}$" maxlength="10" id="exampleInputId" placeholder="請填正確身份證號碼" required>
+          <input type="text" class="form-control" formControlName="idno" pattern="^[A-Z]\d{9}$" maxlength="10" id="exampleInputId"
+            placeholder="請填正確身份證號碼" required>
         </div>
         <div class="form-group form-group-lg col-xs-12">
           <label for="exampleInputAdd">地址</label>
-          <input type="text" class="form-control"  formControlName="address" id="exampleInputAdd" placeholder="請填正確地址" required>
+          <input type="text" class="form-control" formControlName="address" id="exampleInputAdd" placeholder="請填正確地址" required>
         </div>
         <div class="form-group form-group-lg col-sm-6 col-xs-12">
           <label for="mytype">請選擇獎金申請方式</label>
@@ -31,7 +32,7 @@
             <option value=2>現金禮券</option>
           </select>
         </div>
-        <div class="form-group form-group-lg col-sm-6 col-xs-12"  [hidden]="mytype!=2">
+        <div class="form-group form-group-lg col-sm-6 col-xs-12" [hidden]="mytype!=2">
           <label for="coupon">請選擇要申請的禮券</label>
           <select class="form-control" id="coupon" formControlName="coupon">
                 <option>SOGO禮券</option>
@@ -53,7 +54,8 @@
           </div>
           <div class="form-group form-group-lg col-xs-12">
             <label for="bankAccount">銀行帳號</label>
-            <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="bankAccount" formControlName="bankAccount" [required]="mytype==1">
+            <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="bankAccount" formControlName="bankAccount"
+              [required]="mytype==1">
           </div>
         </div>
         <div class="checkbox col-xs-12">
@@ -72,3 +74,66 @@
   </div>
 </section>
 <!--section4 end-->
+<!--check data 確認資料是否正確-->
+<div class="popup check-popup" style="display:none">
+  <div class="pop-cont check-pop">
+    <div class="pop-title">請確認您的資料</div>
+    <ul>
+      <li>
+        <div class="sub">姓名:</div>
+        <span>{{twddForm.value.name}}</span>
+      </li>
+      <li>
+        <div class="sub">身份證:</div>
+        <span>{{twddForm.value.idno}}</span>
+      </li>
+      <li>
+        <div class="sub">地址:</div>
+        <span>{{twddForm.value.address}}</span>
+      </li>
+      <li *ngIf="mytype==2">
+        <div class="sub">申請方式:</div>
+        <span>{{twddForm.value.coupon}}</span>
+      </li>
+      <li *ngIf="mytype==1">
+        <div class="sub">申請方式:</div>
+        <span>現金匯款</span>
+      </li>
+      <li *ngIf="mytype==1">
+        <div class="sub">銀行代碼:</div>
+        <span>{{twddForm.value.bankCode}}</span>
+      </li>
+      <li *ngIf="mytype==1">
+        <div class="sub">分行:</div>
+        <span>{{twddForm.value.bankName}}</span>
+      </li>
+      <li *ngIf="mytype==1">
+        <div class="sub">帳號:</div>
+        <span>{{twddForm.value.bankAccount}}</span>
+      </li>
+    </ul>
+    <ul class="check-money">
+      <li>
+        <div class="sub">兌換獎金:</div>
+        <span>{{user.income}}</span>
+      </li>
+      <li class="line">
+        <div class="sub">手續費:</div>
+        <span>-30</span>
+      </li>
+      <li>
+        <div class="sub">實際兌換獎金:</div>
+        <span>{{actualAmount}}</span>
+      </li>
+      <li *ngIf="mytype==2">
+        <div class="sub">餘額:</div>
+        <span>{{balance}}</span>
+      </li>
+    </ul>
+    <div class="btns">
+      <button type="submit" class="btn btn-primary btn-lg send-btn" (click)="onSubmitReady()">送出</button>
+      <button type="submit" class="btn btn-primary btn-lg send-btn" (click)="closeBtn()">重填</button>
+    </div>
+  </div>
+  <div class="pop-bg" (click)="closeBtn()"></div>
+</div>

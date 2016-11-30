@@ -22,7 +22,6 @@ export class AppComponent implements OnInit, OnDestroy{
   download="http://event.twdd.com.tw/2016/check.html?na=";
   code:string;//認證碼
   user:Object = {};
-  // userLogin:Object = {cell:"0936173312", password:"611003"};
   userLogin:Object = {cell:"", password:""};
   vcode="";
   captcha="";
@@ -33,17 +32,16 @@ export class AppComponent implements OnInit, OnDestroy{
   isTest = false;//是否測試用....========================================
   testUser:Object = {
     UserName : "劉子莊",
-    income:2000,
-    shareTime:['2016-10-22 23:25'],
+    income:560,
+    shareTime:[{name:'erikson',time:'2016-10-22 23:25'}, {name:'erikson',time:'2016-10-25 21:15'}],
     code:"A1B2C3",
-    used:{1:10, 2:12, 3:33, 4:45},
+    used:[10, 12, 33, 45],
     apply:3500
   }
   //test =============================================================
 
   constructor(private router:Router, private twddService:TwddServiceService ){
     this.twddService.missionUser$.subscribe(res => {
-      console.log('=======================')
       console.log(res);
       this.user = res;
       this.code=this.user['code'];
@@ -52,11 +50,11 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(){
-
     // test=======================================================================================
     if(this.isTest){
       console.log('is test version');
       this.vcode = "test123456789";
+      this.userLogin = {cell:"0936173312", password:"611003"};
       this.twddService.setupVcode(this.vcode);
       return;
     }
@@ -90,9 +88,10 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   onLogin(){
-    // this.loginTo();  //test ======================================================
-
-    //上線時請將下面註解拿掉=================================================================
+    if(this.isTest){
+      this.loginTo();
+      return;
+    }
 
     if(this.captcha){
       this.loginTo();
@@ -100,7 +99,6 @@ export class AppComponent implements OnInit, OnDestroy{
       alert('請勾選我不是機器人');
     }
 
-    //=======================================================================================
   }
 
   loginTo(){
@@ -187,6 +185,11 @@ export class AppComponent implements OnInit, OnDestroy{
   getForm(){
     if(this.user['income']==0){
       alert('您目前無任何獎金可申請');
+      return;
+    }
+
+    if(this.user['income']<100){
+      alert('因手續費問題,低於100元無法兌換');
       return;
     }
 
