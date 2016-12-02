@@ -11,7 +11,7 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, OnDestroy{
-  recaptchaSiteKey  = '6LdAcwwUAAAAACAzbaFRJcalcqhxCzktmV_mbKw3'; 
+  recaptchaSiteKey = '6LdAcwwUAAAAACAzbaFRJcalcqhxCzktmV_mbKw3';
   form = false;
   login = false;
   isForget = false;
@@ -26,7 +26,6 @@ export class AppComponent implements OnInit, OnDestroy{
   vcode="";
   captcha="";
   subs:Subscription;
-
   income:string;
 
   isTest = false;//是否測試用....========================================
@@ -42,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   constructor(private router:Router, private twddService:TwddServiceService ){
     this.twddService.missionUser$.subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.user = res;
       this.code=this.user['code'];
       this.user['total']=res['used'][0]+res['used'][1]+res['used'][2]+res['used'][3];
@@ -50,6 +49,7 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(){
+    gapage('index');
     // test=======================================================================================
     if(this.isTest){
       console.log('is test version');
@@ -67,7 +67,6 @@ export class AppComponent implements OnInit, OnDestroy{
     },
     err => {
       console.log('Error fetching data');
-
     });
   }
 
@@ -98,7 +97,8 @@ export class AppComponent implements OnInit, OnDestroy{
     }else{
       alert('請勾選我不是機器人');
     }
-
+    
+    gaclick('login_btn');
   }
 
   loginTo(){
@@ -125,7 +125,6 @@ export class AppComponent implements OnInit, OnDestroy{
     if(!this.isTest){
       this.getList();
     }
-    
   }
 
   getList(){
@@ -142,6 +141,7 @@ export class AppComponent implements OnInit, OnDestroy{
   //忘記密碼
   forgetBtn(){
     this.isForget=true;
+    gaclick('forget_btn');
   }
   closeForget(ev){
     this.isForget=false;
@@ -149,21 +149,26 @@ export class AppComponent implements OnInit, OnDestroy{
 
   noteBtn(){
     this.onSliderUP();
+    gaclick('活動辧法');
   }
   historyBtn(){
     // console.log('分享記錄');
+    gaclick('分享記錄_btn');
   }
   detailsBtn(){
     // console.log('詳情說明');
+    gaclick("詳情說明_btn");
   }
   exchangeBtn(){
     // console.log('兌換記錄');
+    gaclick("兌換記錄_btn");
   }
   qaBtn(){
     this.onSliderUP();
   }
 
   appBtn(){
+    gaclick("下載APP_btn");
     window.open(this.twddapp);
   }
 
@@ -172,6 +177,7 @@ export class AppComponent implements OnInit, OnDestroy{
 			scrollTop: 0
 		}, 600);
     this.onSliderUP();
+    gaclick('home_btn');
   }
 
   onDownBtn(){
@@ -183,6 +189,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
   //打開form表
   getForm(){
+    gaclick("兌換獎金_btn");
     if(this.user['income']==0){
       alert('您目前無任何獎金可申請');
       return;
@@ -222,9 +229,11 @@ export class AppComponent implements OnInit, OnDestroy{
     let line_des = `開車去喝酒，酒後找台灣代駕，10公里內450元起，嚴格篩選司機，享代駕責任保險，快下載APP ${encodeURIComponent(downloadUrl)} ，使用邀請碼 ${this.code}，註冊會員再享前三趟100元共300元折扣`;
     if(type=="fb"){
       this.shareFb(downloadUrl,title,fb_des,this.fbpic);
+      gaclick('share_facebook');
     }
     if(type=='line'){
       this.shareLine(line_des);
+      gaclick("share_line");
     }
   }
 
@@ -246,7 +255,6 @@ export class AppComponent implements OnInit, OnDestroy{
   }
 
   shareLine(str){
-      console.log(str);
     let url = 'http://line.naver.jp/R/msg/text/?'+str;
     window.open(url);
   }

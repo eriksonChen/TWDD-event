@@ -15,32 +15,17 @@ export class ForgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    
   }
 
   sendPassowrd(){
     if(!this.isSend){
+      gaclick('忘記密碼送出');
       this.submitCell();
     }
   }
 
   submitCell(){
     let obj={cell:this.cell, _token:this.vcode};
-    // $.ajax({
-    //   type: 'POST',
-    //   url: 'http://event.twdd.com.tw/forget',
-    //   data: $.param(this.cell),
-    //   success: (res)=>{
-    //     if(res.status==0){
-    //       alert(res.msg);
-    //       this.isSend=false;
-    //     }
-    //     if(res.status==1){
-    //       this.isSend=true;
-    //     }
-    //   },
-    //   dataType: 'json'
-    // });
     this.twddService.forgetPS(obj).subscribe(res => {
       console.log(res);
       if(res.status==0){

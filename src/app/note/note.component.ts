@@ -9,6 +9,7 @@ export class NoteComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    gapage("活動辦法");
   }
 
 }

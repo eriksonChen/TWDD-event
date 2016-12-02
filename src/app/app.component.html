@@ -49,7 +49,7 @@
         <div class="banner-txt">
           夠交情喝兩杯，不酒駕平安歸！<br> 換帖真心推薦，現金獎勵回饋！
         </div>
-        <button type="button" class="btn btn-secondary details-btn" [routerLink]="['/pop/details']">活動詳情</button>
+        <button type="button" class="btn btn-secondary details-btn" [routerLink]="['/pop/details']" (click)="detailsBtn()">活動詳情</button>
       </div>
       <div class="cont-right">
         <img src="./assets/img/girls.png">
@@ -68,7 +68,7 @@
           <div class="inputGroup">
             <div class="input-group input-group-lg">
               <span class="input-group-addon glyphicon glyphicon-earphone" aria-hidden="true"></span>
-              <input type="tel" class="form-control" ngModel name="cell" maxlength="10" pattern="09[1-8][0-9]{7}" [(ngModel)]="userLogin.cell"
+              <input type="tel" class="form-control" ngModel name="cell" maxlength="10" pattern="09[0-9]{8}" [(ngModel)]="userLogin.cell"
                 placeholder="你的手機號碼" required>
             </div>
             <div class="pass">

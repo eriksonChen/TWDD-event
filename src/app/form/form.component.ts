@@ -41,6 +41,7 @@ export class FormComponent implements OnInit {
     this.twddForm.value['_token'] = this.twddService.getVcode();
     this.user = this.twddService.getUser();
     this.getBank();
+    gapage('申請獎金');
   }
 
   //讀取銀行代碼資料
@@ -70,41 +71,7 @@ export class FormComponent implements OnInit {
 
     this.wait = true;
     this.onCheckData();
-
-
-    // let txt = "";
-
-    // if (this.twddForm.value['type'] == 1) {
-    //   this.twddForm.value['coupon'] = "";
-    //   txt = `銀行代碼:${this.twddForm.value['bankCode']}
-    //     分行:${this.twddForm.value['bankName']}
-    //     銀行帳號:${this.twddForm.value['bankAccount']}`;
-    // } else {
-    //   txt = `要申請的禮券:${this.twddForm.value['coupon']}`;
-    // }
-
-    // var conf = confirm(`請確認您的資料
-    //     姓名:${this.twddForm.value['name']}
-    //     身份證:${this.twddForm.value['idno']}
-    //     地址:${this.twddForm.value['address']}
-    //     ${txt}
-    //   `);
-
-
-    // if (conf) {
-    //   this.twddService.sendApply(this.twddForm.value).subscribe(res => {
-    //     if (res.status == 0) {
-    //       alert(res.msg);
-    //       this.wait = false;
-    //     }
-    //     if (res.status == 1) {
-    //       this.onSubmitReady();
-    //     }
-    //   });
-    // } else {
-    //   this.wait = false;
-    // }
-
+    gaclick('送出並確認');
   }
 
   onCheckData() {
@@ -130,6 +97,7 @@ export class FormComponent implements OnInit {
   closeBtn() {
     $('.check-popup').fadeOut('fast');
     this.wait = false;
+    gaclick('取消送出');
   }
 
   //資料上傳後回到上個步驟
@@ -153,6 +121,8 @@ export class FormComponent implements OnInit {
         this.closeForm.emit();
       }
     });
+
+    gaclick('確認後送出');
   }
 
 }

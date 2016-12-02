@@ -9,6 +9,7 @@ export class QaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    gapage('服務Q&A');
   }
 
 }
