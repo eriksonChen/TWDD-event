@@ -2,7 +2,7 @@
 <!--填寫帳戶資料-->
 <section class="section4">
   <h3 class="title">兌換獎金</h3>
-  <div class="tips ballRed">每筆申請手續費30元自獎金餘額中扣除</div>
+  <div class="tips">每筆申請手續費30元自獎金餘額中扣除，禮券扣除30元手續費後，金額低於100元無法兌換</div>
   <div class="money-cont-s">
     <div class="money">{{user.income | currency:'USD':true:'1.0'}}元</div>
     <div class="money-txt">可兌換獎金</div>
@@ -60,7 +60,7 @@
         </div>
         <div class="checkbox col-xs-12">
           <label>
-                <input type="checkbox" formControlName="check"> 我已同意<a class="note-btn" href="javascript:;" [routerLink]="['/pop/note']" required>活動條款</a>、獎金的稅務說明及發放說明
+                <input type="checkbox" formControlName="check"> 我已同意<a class="note-btn" href="javascript:;" [routerLink]="['/pop/note']" required>活動條款、獎金的稅務說明及發放說明</a>
               </label>
         </div>
         <button type="submit" class="btn btn-default submit-btn btn-disable col-xs-12">資料送出</button>

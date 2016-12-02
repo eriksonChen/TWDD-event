@@ -18,7 +18,7 @@ export class AppComponent implements OnInit, OnDestroy{
   fbapi='1035112683277194';
   url='http://twdd.com.tw';
   fbpic='http://event.twdd.com.tw/2016/assets/img/fb2.jpg';
-  twddapp="http://s.ad-locus.com/twdd";
+  twddapp="https://goo.gl/kIoR15";
   download="http://event.twdd.com.tw/2016/check.html?na=";
   code:string;//認證碼
   user:Object = {};
@@ -27,15 +27,15 @@ export class AppComponent implements OnInit, OnDestroy{
   captcha="";
   subs:Subscription;
   income:string;
-
   isTest = false;//是否測試用....========================================
+
   testUser:Object = {
     UserName : "劉子莊",
-    income:560,
-    shareTime:[{name:'erikson',time:'2016-10-22 23:25'}, {name:'erikson',time:'2016-10-25 21:15'}],
+    income:2340,
+    shareTime:[{name:'erikson',time:'2016-10-22 23:25'}, {name:'apple',time:'2016-10-25 21:15'}],
     code:"A1B2C3",
     used:[10, 12, 33, 45],
-    apply:3500
+    apply:5670
   }
   //test =============================================================
 
@@ -262,5 +262,15 @@ export class AppComponent implements OnInit, OnDestroy{
   ngOnDestroy(){
     this.subs.unsubscribe();
   }
+
+
+  formatNumber(n) {
+    let str=n+"";
+		if (str.length <= 3) {
+			return str;
+		} else {
+			return this.formatNumber(str.substr(0, str.length - 3)) + ',' + str.substr(str.length - 3);
+		}
+	}
 
 }

@@ -358,10 +358,14 @@ body {
             @include btnStyle(200px, #fff, #fff, #3C5A99, #116BA9);
           }
           .line-btn {
+            display: none;
             img {
               width: 40px;
             }
             @include btnStyle(200px, #fff, #fff, #02C300, #03AF01);
+            @media #{$sml}{
+              display: block;
+            }
           }
           @media #{$sml} {
             margin-top: 10px;
@@ -403,11 +407,12 @@ body {
         .txt {
           margin-top: 30px;
           font-size: 20px;
-          font-weight: 400;
+          font-weight: bold;
         }
         .txt2 {
           font-size: 18px;
           margin-top: 20px;
+          font-weight: bold;
         }
         button.btn {
           display: block;
@@ -416,14 +421,43 @@ body {
         }
         .history-pic {
           margin-top: 90px;
+          position: relative;
           img {
             width: 150px;
+          }
+          .sball{
+            position: absolute;
+            background-color: red;
+            left: 53%;
+            top: 20%;
+
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            @include rounded(100%);
           }
         }
         button.history-btn {
           margin-top: 50px;
-          @include btnStyle(170px, #fff, $lightBlue, $lightBlue, inherit);
+          @include btnStyle(200px, #fff, $lightBlue, $lightBlue, inherit);
           height: 43px;
+        }
+        .used-list{
+          position: relative;
+          margin: 32px auto 0;
+          list-style: none;
+          margin: 32px 15px 0;
+          padding-bottom: 20px;
+          border-bottom: 1px solid $lightGray;
+          li{
+            padding: 10px 0;
+            span{
+              color: white;
+              @include rounded(10px);
+              padding: 6px 12px;
+            }
+          }
         }
         .balls {
           position: relative;
@@ -446,32 +480,42 @@ body {
               font-size: 14px;
             }
           }
-          .b1 {
-            background-color: $ballRed;
-          }
-          .b2 {
-            background-color: $ballGreen;
-          }
-          .b3 {
-            background-color: $ballBlue;
-          }
-          .b4 {
-            background-color: $ballOrange;
-          }
+        }
+        .b1 {
+          background-color: $ballRed;
+        }
+        .b2 {
+          background-color: $ballGreen;
+        }
+        .b3 {
+          background-color: $ballBlue;
+        }
+        .b4 {
+          background-color: $ballOrange;
         }
         .info {
-          margin-top: 20px;
+          text-align: right;
+          margin-top: 15px;
+          display: flex;
+          // justify-content: space-around;
+          align-items: center;
           .info-txt {
             font-size: 18px;
             color: $textGray;
+            width: 43%;
           }
           .info-num {
-            font-size: 40px;
+            font-size: 36px;
             font-weight: 300;
+            // padding-right: 50px;
+            width: 35%;
+            @media #{$sml}{
+              // padding-right: 40px;
+            }
           }
         }
         .info1 {
-          margin-top: 30px;
+          margin-top: 40px;
         }
         .btns {
           margin-top: 20px;
@@ -490,6 +534,10 @@ body {
     .tips {
       font-size: 16px;
       padding: 0 26px;
+      width: 50%;
+      @media #{$sml}{
+        width: 100%;
+      }
       /*color: $ballRed;*/
     }
     .cont-left {
@@ -570,6 +618,12 @@ body {
     width: 500px;
     height: 550px;
     .list-group {
+      li{
+        .sname{
+          margin-right: 10px;
+        }
+        text-align: left;
+      }
       margin: 20px 70px;
     }
   }
