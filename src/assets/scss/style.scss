@@ -405,13 +405,13 @@ body {
           margin-bottom: 10px;
         }
         .txt {
-          margin-top: 30px;
+          margin-top: 20px;
           font-size: 20px;
           font-weight: bold;
         }
         .txt2 {
           font-size: 18px;
-          margin-top: 20px;
+          margin-top: 10px;
           font-weight: bold;
         }
         button.btn {
@@ -427,7 +427,7 @@ body {
           }
           .sball{
             position: absolute;
-            background-color: red;
+            background-color: $ballRed;
             left: 53%;
             top: 20%;
 
@@ -461,23 +461,30 @@ body {
         }
         .balls {
           position: relative;
-          margin: 32px auto 0;
-          width: 190px;
+          margin: 26px auto 0;
+          width: 220px;
           display: flex;
           flex-wrap: wrap;
           justify-content: space-between;
           .ball {
-            width: 90px;
-            height: 90px;
+            width: 105px;
+            height: 105px;
             @include rounded(100%);
             color: #fff;
-            line-height: 90px;
+            line-height: 1.2;
             text-align: center;
             margin-bottom: 10px;
             font-size: 34px;
             font-weight: 100;
-            span {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            span, .stxt {
               font-size: 14px;
+            }
+            .ltxt{
+              // line-height: 1;
             }
           }
         }
@@ -496,6 +503,7 @@ body {
         .info {
           text-align: right;
           margin-top: 15px;
+          padding: 8px;
           display: flex;
           // justify-content: space-around;
           align-items: center;
@@ -507,11 +515,15 @@ body {
           .info-num {
             font-size: 36px;
             font-weight: 300;
+            line-height: 1;
             // padding-right: 50px;
-            width: 35%;
+            width: 31%;
             @media #{$sml}{
               // padding-right: 40px;
             }
+          }
+          .stxt{
+            align-self: flex-end;
           }
         }
         .info1 {
@@ -624,7 +636,7 @@ body {
         }
         text-align: left;
       }
-      margin: 20px 70px;
+      margin: 20px 60px;
     }
   }
   .details-pop {

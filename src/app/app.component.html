@@ -123,39 +123,43 @@
           </div>
           <img src="./assets/img/history.png" width="120">
         </div>
-        <button type="button" class="btn btn-secondary history-btn" [routerLink]="['/pop/history']">您的邀請成功記錄</button>
+        <button type="button" class="btn btn-secondary history-btn"(click)="historyBtn()">您的邀請成功記錄</button>
       </div>
       <div class="box">
-        <div class="txt">邀請碼使用量分析</div>
-        <ul class="used-list">
-          <li>邀請成功但還未使用共 <span class="b1">{{user.used[0]}}人</span></li>
-          <li>邀請成功並有一次使用共 <span class="b2">{{user.used[1]}}人</span></li>
-          <li>邀請成功並有二次使用共 <span class="b3">{{user.used[2]}}人</span></li>
-          <li>邀請成功並有三次使用共 <span class="b4">{{user.used[3]}}人</span></li>
-        </ul>
-        <!--<div class="balls">
-          <div class="ball b1">{{user.used[0]}}<span>／0次</span></div>
-          <div class="ball b2">{{user.used[1]}}<span>／1次</span></div>
-          <div class="ball b3">{{user.used[2]}}<span>／2次</span></div>
-          <div class="ball b4">{{user.used[3]}}<span>／3次</span></div>
-        </div>-->
-        <div class="txt2">成功的被邀請人：{{user.total}}</div>
+        <div class="txt">被邀請人使用量</div>
+        <!--<ul class="used-list">
+          <li>還未使用共 <span class="b1">{{user.used[0]}}人</span></li>
+          <li>一次使用共 <span class="b2">{{user.used[1]}}人</span></li>
+          <li>二次使用共 <span class="b3">{{user.used[2]}}人</span></li>
+          <li>三次使用共 <span class="b4">{{user.used[3]}}人</span></li>
+        </ul>-->
+        <div class="balls">
+          <div class="ball b1"><div class="ltxt">{{user.used[0]}}<span>人</span></div>
+          <div class="stxt">還未使用</div></div>
+          <div class="ball b2"><div class="ltxt">{{user.used[1]}}<span>人</span></div>
+          <div class="stxt">一次使用</div></div>
+          <div class="ball b3"><div class="ltxt">{{user.used[2]}}<span>人</span></div>
+          <div class="stxt">二次使用</div></div>
+          <div class="ball b4"><div class="ltxt">{{user.used[3]}}<span>人</span></div>
+          <div class="stxt">三次使用</div></div>
+        </div>
+        <div class="txt2">共{{user.total}}個成功的被邀請人</div>
       </div>
       <div class="box">
         <div class="info info1">
           <span class="info-txt">未兌換獎金</span>
-          <span class="info-num">{{formatNumber(user.income)}}</span>
+          <span class="info-num">{{formatNumber(user.income)}}</span><span class="stxt">元</span>
         </div>
         <div class="info">
           <span class="info-txt">已兌換獎金</span>
-          <span class="info-num">{{formatNumber(user.apply) }}</span>
+          <span class="info-num">{{formatNumber(user.apply) }}</span><span class="stxt">元</span>
         </div>
         <div class="info">
           <span class="info-txt">累積獎金</span>
-          <span class="info-num">{{formatNumber(user.income+user.apply) }}</span>
+          <span class="info-num">{{formatNumber(user.income+user.apply) }}</span><span class="stxt">元</span>
         </div>
         <div class="btns">
-          <button type="button" class="btn btn-secondary record-btn" [routerLink]="['/pop/exchange']" (click)="exchangeBtn()">兌換記錄</button>
+          <button type="button" class="btn btn-secondary record-btn" (click)="exchangeBtn()">兌換記錄</button>
           <button type="button" class="btn btn-secondary bonus-btn" (click)="getForm()">兌換獎金</button>
         </div>
       </div>

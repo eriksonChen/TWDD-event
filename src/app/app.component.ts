@@ -28,11 +28,12 @@ export class AppComponent implements OnInit, OnDestroy{
   subs:Subscription;
   income:string;
   isTest = false;//是否測試用....========================================
+  apply_list=[];
 
   testUser:Object = {
     UserName : "劉子莊",
     income:2340,
-    shareTime:[{name:'erikson',time:'2016-10-22 23:25'}, {name:'apple',time:'2016-10-25 21:15'}],
+    shareTime:[],
     code:"A1B2C3",
     used:[10, 12, 33, 45],
     apply:5670
@@ -134,6 +135,7 @@ export class AppComponent implements OnInit, OnDestroy{
       }
       if(res.status==1){
         this.twddService.changeList(res.data);
+        this.apply_list = res.data;
       }
     })
   }
@@ -152,16 +154,24 @@ export class AppComponent implements OnInit, OnDestroy{
     gaclick('活動辧法');
   }
   historyBtn(){
-    // console.log('分享記錄');
     gaclick('分享記錄_btn');
+    if(this.user['shareTime'].length==0){
+      alert('您目前無任何分享記錄');
+      return;
+    }
+    this.router.navigate(['/pop/history']);
   }
   detailsBtn(){
     // console.log('詳情說明');
     gaclick("詳情說明_btn");
   }
   exchangeBtn(){
-    // console.log('兌換記錄');
     gaclick("兌換記錄_btn");
+    if(this.apply_list.length==0){
+      alert('您目前無任何兌換記錄');
+      return;
+    }
+    this.router.navigate(['/pop/exchange']);
   }
   qaBtn(){
     this.onSliderUP();
