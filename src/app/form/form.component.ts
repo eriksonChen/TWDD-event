@@ -111,14 +111,21 @@ export class FormComponent implements OnInit {
     this.user['income'] = this.balance;
 
     this.twddService.sendApply(this.twddForm.value).subscribe(res => {
+
+      this.closeForm.emit();
+
       if (res.status == 0) {
-        alert(res.msg);
+        setTimeout(()=> {
+          alert(res.msg);
+        }, 10);
+        
         this.wait = false;
       }
       if (res.status == 1) {
-        alert('資料已上傳');
+        setTimeout(()=> {
+          alert('資料已上傳');
+        }, 10);
         this.twddService.changeUser(this.user);
-        this.closeForm.emit();
       }
     });
 
