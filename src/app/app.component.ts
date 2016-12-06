@@ -36,8 +36,25 @@ export class AppComponent implements OnInit, OnDestroy{
     shareTime:[],
     code:"A1B2C3",
     used:[19, 12, 3, 2],
-    apply:0
+    apply:0,
+    total:300
   }
+
+  testList = [{
+    no: 27,
+    money: 200,
+    type: "禮券（SOGO禮券）",
+    fee: 30,
+    time: "2016-12-05 11:18"
+  },
+  {
+    no: 28,
+    money: 600,
+    type: "禮券（SOGO禮券）",
+    fee: 30,
+    time: "2016-12-03 10:10"
+  }];
+
   //test =============================================================
 
   constructor(private router:Router, private twddService:TwddServiceService ){
@@ -45,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy{
       // console.log(res);
       this.user = res;
       this.code=this.user['code'];
-      this.user['total']=res['used'][0]+res['used'][1]+res['used'][2]+res['used'][3];
+      this.user['usedTotal']=res['used'][0]+res['used'][1]+res['used'][2]+res['used'][3];
     })
   }
 
@@ -123,12 +140,20 @@ export class AppComponent implements OnInit, OnDestroy{
 
     $('.section1').slideUp();
     this.login=true;
-    if(!this.isTest){
-      this.getList();
-    }
+    this.getList();
+    
   }
 
   getList(){
+    // test 用 ======================================
+    if(this.isTest){
+      this.twddService.changeList(this.testList);
+      this.apply_list = this.testList;
+      console.log('get my list');
+      return;
+    }
+    // test 用 ======================================
+
     this.twddService.list().subscribe(res => {
       if(res.status==0){
         alert(res.msg);
@@ -148,7 +173,6 @@ export class AppComponent implements OnInit, OnDestroy{
   closeForget(ev){
     this.isForget=false;
   }
-
   noteBtn(){
     this.onSliderUP();
     gaclick('活動辧法');

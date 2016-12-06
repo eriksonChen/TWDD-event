@@ -143,20 +143,20 @@
           <div class="ball b4"><div class="ltxt">{{user.used[3]}}<span>人</span></div>
           <div class="stxt">三次使用</div></div>
         </div>
-        <div class="txt2">共{{user.total}}個成功的被邀請人</div>
+        <div class="txt2">共{{user.usedTotal}}個成功的被邀請人</div>
       </div>
       <div class="box">
         <div class="info info1">
-          <span class="info-txt">未兌換獎金</span>
-          <span class="info-num">{{formatNumber(user.income)}}</span><span class="stxt">元</span>
+          <span class="info-txt">累積獎金</span>
+          <span class="info-num">{{formatNumber(user.total) }}</span><span class="stxt">元</span>
         </div>
         <div class="info">
           <span class="info-txt">已兌換獎金</span>
           <span class="info-num">{{formatNumber(user.apply) }}</span><span class="stxt">元</span>
         </div>
         <div class="info">
-          <span class="info-txt">累積獎金</span>
-          <span class="info-num">{{formatNumber(user.income+user.apply) }}</span><span class="stxt">元</span>
+          <span class="info-txt">未兌換獎金</span>
+          <span class="info-num">{{formatNumber(user.income)}}</span><span class="stxt">元</span>
         </div>
         <div class="btns">
           <button type="button" class="btn btn-secondary record-btn" (click)="exchangeBtn()">兌換記錄</button>

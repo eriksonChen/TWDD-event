@@ -1,11 +1,13 @@
 <div class="pop-title">兌換記錄</div>
-<ul class="list-group">
+<ul class="list-group txt-left">
   <li class="list-group-item" *ngFor="let item of apply_list">
-    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
     <div class="time">
-      {{item.time}}
+      <span class="gray time-txt">時間：</span>{{item.time}}
     </div>
-    <div class="money">金額：{{item.money}}</div>
+    <div class="money"><span class="gray">兌換金額：</span>{{item.money+item.fee}}</div>
+    <div class="money"><span class="gray">手續費：</span>{{item.fee}}</div>
+    <div class="money"><span class="gray">兌換方式：</span>{{item.type}}</div>
+    <div class="money"><span class="gray">實際兌換金額：</span>{{item.money}}</div>
   </li>
   
 </ul>

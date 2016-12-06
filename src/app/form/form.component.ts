@@ -107,8 +107,9 @@ export class FormComponent implements OnInit {
     // this.closeForm.emit();
     //test ======================================
 
-    this.user['apply'] += this.actualAmount;
+    this.user['apply'] += (this.actualAmount+30);
     this.user['income'] = this.balance;
+    this.user['total'] = this.user['apply'] + this.balance;
 
     this.twddService.sendApply(this.twddForm.value).subscribe(res => {
 

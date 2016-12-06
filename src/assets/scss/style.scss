@@ -716,7 +716,10 @@ body {
     min-height: 550px;
     text-align: justify;
     .list-group {
-      margin: 20px 50px;
+      margin: 20px;
+      .list-group-item{
+        text-align: left;
+      }
       .glyphicon-time {
         @media #{$sml} {
           display: none;
@@ -728,7 +731,22 @@ body {
       display: inline-block;
       line-height: 40px;
       margin: 0 10px;
+      font-size: 16px;
+      .gray{
+        color: $textGray;
+        margin-right: 0;
+        font-size: 16px;
+      }
+
+      @media #{$sml}{
+        font-size: 18px;
+        .gray{
+          font-size: 18px;
+        }
+      }
+      
     }
+    
   }
   .forget-pop {
     width: 500px;
