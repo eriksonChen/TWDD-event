@@ -61,6 +61,16 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
+    if(this.user['income']==0){
+      alert('您目前無任何獎金可申請');
+      return;
+    }
+
+    if(this.user['income']<100){
+      alert('因手續費問題,低於100元無法兌換');
+      return;
+    }
+    
     if (!this.twddForm.value.check) {
       alert('請同意活動條款及獎金稅務說明及發放說明');
       return;

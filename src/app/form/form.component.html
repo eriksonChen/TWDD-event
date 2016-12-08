@@ -17,8 +17,8 @@
           <input type="text" class="form-control" formControlName="name" id="name" placeholder="請輸入正確姓名" required>
         </div>
         <div class="form-group form-group-lg col-sm-6 col-xs-12">
-          <label for="exampleInputId">身份證</label>
-          <input type="text" class="form-control" formControlName="idno" pattern="^[A-Z]\d{9}$" maxlength="10" id="exampleInputId"
+          <label for="idno">身份證</label>
+          <input type="text" class="form-control" formControlName="idno" pattern="^[A-Z]\d{9}$" autocomplete="off" maxlength="10" id="idno"
             placeholder="請填正確身份證號碼" required>
         </div>
         <div class="form-group form-group-lg col-xs-12">
@@ -54,8 +54,7 @@
           </div>
           <div class="form-group form-group-lg col-xs-12">
             <label for="bankAccount">銀行帳號</label>
-            <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" class="form-control" id="bankAccount" formControlName="bankAccount"
-              [required]="mytype==1">
+            <input type="text" class="form-control" id="bankAccount" formControlName="bankAccount" autocomplete="off" pattern="^(0|[1-9][0-9]{13,15})$" [required]="mytype==1">
           </div>
         </div>
         <div class="checkbox col-xs-12">

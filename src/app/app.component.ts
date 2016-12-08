@@ -28,11 +28,11 @@ export class AppComponent implements OnInit, OnDestroy{
   subs:Subscription;
   income:string;
   isTest = false;//是否測試用....========================================
-  apply_list=[];
+  apply_list = [];
 
   testUser:Object = {
     UserName : "劉子莊",
-    income:300,
+    income:90,
     shareTime:[],
     code:"A1B2C3",
     used:[19, 12, 3, 2],
@@ -140,7 +140,8 @@ export class AppComponent implements OnInit, OnDestroy{
 
     $('.section1').slideUp();
     this.login=true;
-    this.getList();
+    this.form=true;
+    // this.getList();
     
   }
 
@@ -149,6 +150,12 @@ export class AppComponent implements OnInit, OnDestroy{
     if(this.isTest){
       this.twddService.changeList(this.testList);
       this.apply_list = this.testList;
+      if(this.apply_list.length==0){
+        alert('您目前無任何兌換記錄');
+        return;
+      }else{
+        this.router.navigate(['/pop/exchange']);
+      }
       console.log('get my list');
       return;
     }
@@ -161,6 +168,13 @@ export class AppComponent implements OnInit, OnDestroy{
       if(res.status==1){
         this.twddService.changeList(res.data);
         this.apply_list = res.data;
+        if(res.data.length==0){
+          alert('您目前無任何兌換記錄');
+          return;
+        }else{
+          this.router.navigate(['/pop/exchange']);
+        }
+        
       }
     })
   }
@@ -190,12 +204,9 @@ export class AppComponent implements OnInit, OnDestroy{
     gaclick("詳情說明_btn");
   }
   exchangeBtn(){
+    this.getList();
     gaclick("兌換記錄_btn");
-    if(this.apply_list.length==0){
-      alert('您目前無任何兌換記錄');
-      return;
-    }
-    this.router.navigate(['/pop/exchange']);
+    
   }
   qaBtn(){
     this.onSliderUP();
@@ -224,15 +235,15 @@ export class AppComponent implements OnInit, OnDestroy{
   //打開form表
   getForm(){
     gaclick("兌換獎金_btn");
-    if(this.user['income']==0){
-      alert('您目前無任何獎金可申請');
-      return;
-    }
+    // if(this.user['income']==0){
+    //   alert('您目前無任何獎金可申請');
+    //   return;
+    // }
 
-    if(this.user['income']<100){
-      alert('因手續費問題,低於100元無法兌換');
-      return;
-    }
+    // if(this.user['income']<100){
+    //   alert('因手續費問題,低於100元無法兌換');
+    //   return;
+    // }
 
     this.form=true;
     setTimeout(()=>{
@@ -245,7 +256,7 @@ export class AppComponent implements OnInit, OnDestroy{
   //關掉form表
   formClose(){
     $('app-form').slideUp(()=>{
-      this.form = false;
+      // this.form = false;
     });
   }
 
@@ -296,7 +307,6 @@ export class AppComponent implements OnInit, OnDestroy{
   ngOnDestroy(){
     this.subs.unsubscribe();
   }
-
 
   formatNumber(n) {
     let str=n+"";

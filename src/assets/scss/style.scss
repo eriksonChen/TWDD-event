@@ -29,8 +29,8 @@ body {
       text-align: center;
       li {
         a {
-          font-size: 18px;
-          line-height: 1.5;
+          font-size: 20px;
+          line-height: 2.2;
         }
       }
     }
@@ -640,23 +640,84 @@ body {
     }
   }
   .details-pop {
-    width: 650px;
+    width: 800px;
     height: auto;
     .pop-txt {
       text-align: justify;
-      margin: 20px 30px 0;
+      margin: 20px 15px 0;
       h4 {
         font-size: 22px;
         font-weight: bold;
+      }
+      .down{
+        margin-top: 20px;
       }
       .des {
         font-size: 18px;
         margin-bottom: 30px;
         line-height: 28px;
       }
-      @media #{$sml} {
+      .details-box{
+        @include rounded(8px);
+        padding: 20px;
+        margin-bottom: 10px;
+        background-color: $lightGray;
+        .box-title{
+          font-size: 20px;
+          font-weight: bold;
+          color: $lightBlue;
+        }
+        .box-cont{
+          display: flex;
+          justify-content: space-between;
+          align-items:center;
+          .box-des, .box-pic{
+            width: 49%;
+            img{
+              width: 100%;
+            }
+          }
+          .box-des{
+            font-size: 16px;
+            line-height: 1.8;
+            padding: 20px;
+            border-right: 1px solid $textGray;
+          }
+        }
+      }
+    }
+    @media #{$sml}{
+      padding: 20px 0 !important;
+      .pop-txt{
         margin-left: 0;
         margin-right: 0;
+        h4{
+          padding: 0 20px;
+          margin-bottom: 0;
+        }
+        .des{
+          padding:0 20px;
+        }
+        .details-box{
+          padding:0 0 20px;
+          margin: 20px;
+          border-bottom: 1px solid $textGray;
+          background-color: inherit;
+          @include rounded(0px);
+          .box-cont{
+            flex-direction: column;
+            .box-des, .box-pic{
+              width: 100%;
+
+            }
+            .box-des{
+              border-right: inherit;
+              padding: 10px 0;
+              margin-bottom: 20px;
+              font-size: 16px;
+            }
+          }
+        }
       }
     }
   }
