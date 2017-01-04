@@ -27,12 +27,12 @@
         </div>
         <div class="form-group form-group-lg col-sm-6 col-xs-12">
           <label for="mytype">請選擇獎金申請方式</label>
-          <select class="form-control" id="type" formControlName="type" [(ngModel)]="mytype" required>
+          <select class="form-control" id="type" formControlName="type" [(ngModel)]="mytype" (ngModelChange)="onChange($event)"  required>
             <option selected value=1>現金匯款</option>
             <option value=2>現金禮券</option>
           </select>
         </div>
-        <div class="form-group form-group-lg col-sm-6 col-xs-12" [hidden]="mytype!=2">
+        <div class="form-group form-group-lg col-sm-6 col-xs-12 ty2">
           <label for="coupon">請選擇要申請的禮券</label>
           <select class="form-control" id="coupon" formControlName="coupon">
                 <option>SOGO禮券</option>
@@ -41,7 +41,7 @@
               </select>
         </div>
         <!--滙款要填的帳戶資料-->
-        <div class="account-info col-sm-12" [hidden]="mytype!=1">
+        <div class="account-info col-sm-12 ty1">
           <div class="form-group form-group-lg col-sm-6 col-xs-12">
             <label for="bankCode">銀行代碼</label>
             <select class="form-control" id="bankCode" formControlName="bankCode" [required]="mytype==1">
@@ -90,23 +90,23 @@
         <div class="sub">地址:</div>
         <span>{{twddForm.value.address}}</span>
       </li>
-      <li *ngIf="mytype==2">
+      <li class="ty2">
         <div class="sub">申請方式:</div>
         <span>{{twddForm.value.coupon}}</span>
       </li>
-      <li *ngIf="mytype==1">
+      <li class="ty1">
         <div class="sub">申請方式:</div>
         <span>現金匯款</span>
       </li>
-      <li *ngIf="mytype==1">
+      <li class="ty1">
         <div class="sub">銀行代碼:</div>
         <span>{{twddForm.value.bankCode}}</span>
       </li>
-      <li *ngIf="mytype==1">
+      <li class="ty1">
         <div class="sub">分行:</div>
         <span>{{twddForm.value.bankName}}</span>
       </li>
-      <li *ngIf="mytype==1">
+      <li class="ty1">
         <div class="sub">帳號:</div>
         <span>{{twddForm.value.bankAccount}}</span>
       </li>
@@ -124,7 +124,7 @@
         <div class="sub">實際兌換獎金:</div>
         <span>{{actualAmount}}</span>
       </li>
-      <li *ngIf="mytype==2">
+      <li class="ty2">
         <div class="sub">餘額:</div>
         <span>{{balance}}</span>
       </li>
